@@ -2,7 +2,7 @@
 Fork of AMD GPUOpen Compressonator tool , for the purpose of further enhancing glTF support. and prototyping for ETC1S CRN, CTTF_128 Universal Formats, Transcoders, and Supercompression
 
 
-Compressonator
+# Compressonator
 Compressonator is a set of tools to allow artists and developers to more easily create compressed texture assets or model mesh optimizations and easily visualize the quality impact of various compression and rendering technologies. It consists of a GUI application, a command line application and an SDK for easy integration into a developer tool chain.
 
 Compressonator supports Microsoft Windows®, Linux and Mac builds.
