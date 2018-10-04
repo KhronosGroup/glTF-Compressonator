@@ -1,4 +1,3 @@
-*.pdb
 Compressonator/Build/*
 Compressonator/Applications/_Plugins/C3DModel_viewers/glTF_DX12_EX/GeneratedFiles/*
 Compressonator/Applications/_Plugins/C3DModel_viewers/glTF_OpenGL/GeneratedFiles/*
