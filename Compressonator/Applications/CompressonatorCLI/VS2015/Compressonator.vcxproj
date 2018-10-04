@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_MD|Win32">
+      <Configuration>Debug_MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_MD|x64">
+      <Configuration>Debug_MD</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_MD|Win32">
+      <Configuration>Release_MD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_MD|x64">
+      <Configuration>Release_MD</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6DFBE28E-925B-4045-884F-4A10FC029132}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Compressonator</RootNamespace>
+    <ProjectName>CompressonatorCLI</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)/Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)/Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../Compressonator_Root.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../Compressonator_Root.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../Compressonator_Root.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)/Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="../../../Compressonator_Root.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Compressonator_RootDev)Build\$(SolutionName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(Compressonator_RootDev)Build\$(SolutionName)\Temp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>CompressonatorCLI</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Compressonator_RootDev)Build\$(SolutionName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(Compressonator_RootDev)Build\$(SolutionName)\Temp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>CompressonatorCLI</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(Compressonator_RootDev)Build\$(SolutionName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(Compressonator_RootDev)Build\$(SolutionName)\Temp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>CompressonatorCLI</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(Compressonator_RootDev)Build\$(SolutionName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(Compressonator_RootDev)Build\$(SolutionName)\Temp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>CompressonatorCLI</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_WITH_COMMANDLINE_TOOL</PreprocessorDefinitions>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <OpenMPSupport>
+      </OpenMPSupport>
+      <AdditionalIncludeDirectories>$(Compressonator_RootDev)/Applications/_Plugins/Common/json/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/Tootle/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/mesh_optimizer/;$(Compressonator_RootDev)/Applications/_Plugins/Common/gltf/;./;$(Compressonator_RootDev)/Compute/;$(Compressonator_RootDev)/Applications/_Plugins/Common/;$(Compressonator_RootDev)/Source/GPU_Decode;$(Compressonator_RootDev)/Header/GPU_Decode/;$(Compressonator_RootDev)/Header/;$(Compressonator_RootDev)/Applications/_Plugins/CImage/BMP/;$(Compressonator_RootDev)/Header/Codec/ASTC/ARM/;$(Compressonator_RootDev)/Header/Codec/ASTC/;$(Compressonator_APPSDK)/include/;$(Compressonator_GLEW)/include/;$(Compressonator_BOOST)/;$(Compressonator_BOOST)/Include/shared/;$(Compressonator_BOOST)/Include/um/;$(Compressonator_BOOST)/Include/winrt/;$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_QT)/include/;$(Compressonator_QT)/include/QtGui/;$(Compressonator_QT)/include/QtCore/;$(Compressonator_RootDev)/Source/CMP_MeshOptimizer/;$(Compressonator_RootDev)/Source/CMP_MeshCompressor/Draco/src</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <DelayLoadDLLs>
+      </DelayLoadDLLs>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalLibraryDirectories>$(OutDir)/Plugins;$(Compressonator_RootDev)/Build/$(SolutionName)/$(Configuration)/$(Platform);$(Compressonator_QT)/lib;$(Compressonator_GLEW)/lib/$(ShortPlatform);$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ZLIB)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_BOOST)/$(Platform)/;$(Compressonator_BOOST)/lib/VC14/$(ShortPlatform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Compressonator_MD$(DebugSuffix).lib;GPU_Decode_MD$(DebugSuffix).lib;user32.lib;ole32.lib;glew32.lib;d3d11.lib;Gdi32.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib;opengl32.lib;IlmImfd.lib;Iexd.lib;halfd.lib;Imathd.lib;IexMathd.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>../CopyFiles.bat $(Compressonator_QT) $(Compressonator_OPENCV)\$(Platform)\$(SolutionName)\bin\$(DebugRelease)\ $(OUTDIR) $(Compressonator_RootDev) $(Compressonator_GLEW)\bin\$(ShortPlatform) $(Compressonator_VULKAN) $(DebugSuffix)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_MD|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_WITH_COMMANDLINE_TOOL</PreprocessorDefinitions>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <OpenMPSupport>
+      </OpenMPSupport>
+      <AdditionalIncludeDirectories>$(Compressonator_RootDev)/Applications/_Plugins/Common/json/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/Tootle/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/mesh_optimizer/;$(Compressonator_RootDev)/Applications/_Plugins/Common/gltf/;./;$(Compressonator_RootDev)/Compute/;$(Compressonator_RootDev)/Applications/_Plugins/Common/;$(Compressonator_RootDev)/Source/GPU_Decode;$(Compressonator_RootDev)/Header/GPU_Decode/;$(Compressonator_RootDev)/Header/;$(Compressonator_RootDev)/Applications/_Plugins/CImage/BMP/;$(Compressonator_RootDev)/Header/Codec/ASTC/ARM/;$(Compressonator_RootDev)/Header/Codec/ASTC/;$(Compressonator_APPSDK)/include/;$(Compressonator_GLEW)/include/;$(Compressonator_BOOST)/;$(Compressonator_BOOST)/Include/shared/;$(Compressonator_BOOST)/Include/um/;$(Compressonator_BOOST)/Include/winrt/;$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_QT)/include/;$(Compressonator_QT)/include/QtGui/;$(Compressonator_QT)/include/QtCore/;$(Compressonator_RootDev)/Source/CMP_MeshOptimizer/;$(Compressonator_RootDev)/Source/CMP_MeshCompressor/Draco/src</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <DelayLoadDLLs>
+      </DelayLoadDLLs>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalLibraryDirectories>$(OutDir)/Plugins;$(Compressonator_RootDev)/Build/$(SolutionName)/$(Configuration)/$(Platform);$(Compressonator_QT)/lib;$(Compressonator_GLEW)/lib/$(ShortPlatform);$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ZLIB)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_BOOST)/$(Platform)/;$(Compressonator_BOOST)/lib/VC14/x86_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Compressonator_MD$(DebugSuffix).lib;GPU_Decode_MD$(DebugSuffix).lib;user32.lib;ole32.lib;glew32.lib;d3d11.lib;Gdi32.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib;IlmImfd.lib;Iexd.lib;halfd.lib;Imathd.lib;IexMathd.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>../CopyFiles.bat $(Compressonator_QT) $(Compressonator_OPENCV)\$(Platform)\$(SolutionName)\bin\$(DebugRelease)\ $(OUTDIR) $(Compressonator_RootDev) $(Compressonator_GLEW)\bin\$(ShortPlatform) $(Compressonator_VULKAN) $(DebugSuffix)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_WITH_COMMANDLINE_TOOL</PreprocessorDefinitions>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalIncludeDirectories>$(Compressonator_RootDev)/Applications/_Plugins/Common/json/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/Tootle/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/mesh_optimizer/;$(Compressonator_RootDev)/Applications/_Plugins/Common/gltf/;./;$(Compressonator_RootDev)/Compute/;$(Compressonator_RootDev)/Applications/_Plugins/Common/;$(Compressonator_RootDev)/Source/GPU_Decode;$(Compressonator_RootDev)/Header/GPU_Decode/;$(Compressonator_RootDev)/Header/;$(Compressonator_RootDev)/Applications/_Plugins/CImage/BMP/;$(Compressonator_RootDev)/Header/Codec/ASTC/ARM/;$(Compressonator_RootDev)/Header/Codec/ASTC/;$(Compressonator_APPSDK)/include/;$(Compressonator_GLEW)/include/;$(Compressonator_BOOST)/;$(Compressonator_BOOST)/Include/shared/;$(Compressonator_BOOST)/Include/um/;$(Compressonator_BOOST)/Include/winrt/;$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_QT)/include/;$(Compressonator_QT)/include/QtGui/;$(Compressonator_QT)/include/QtCore/;$(Compressonator_RootDev)/Source/CMP_MeshOptimizer/;$(Compressonator_RootDev)/Source/CMP_MeshCompressor/Draco/src</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalLibraryDirectories>$(OutDir)/Plugins;$(Compressonator_RootDev)/Build/$(SolutionName)/$(Configuration)/$(Platform);$(Compressonator_QT)/lib;$(Compressonator_GLEW)/lib/$(ShortPlatform);$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ZLIB)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_BOOST)/$(Platform)/;$(Compressonator_BOOST)/lib/VC14/$(ShortPlatform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Compressonator_MD$(DebugSuffix).lib;GPU_Decode_MD$(DebugSuffix).lib;user32.lib;ole32.lib;glew32.lib;d3d11.lib;Gdi32.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib;IlmImf.lib;Iex.lib;half.lib;Imath.lib;IexMath.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib</AdditionalDependencies>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>../CopyFiles.bat $(Compressonator_QT) $(Compressonator_OPENCV)\$(Platform)\$(SolutionName)\bin\$(DebugRelease)\ $(OUTDIR) $(Compressonator_RootDev) $(Compressonator_GLEW)\bin\$(ShortPlatform) $(Compressonator_VULKANDLL) $(DebugSuffix)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_MD|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_WITH_COMMANDLINE_TOOL</PreprocessorDefinitions>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalIncludeDirectories>$(Compressonator_RootDev)/Applications/_Plugins/Common/json/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/Tootle/;$(Compressonator_RootDev)/Applications/_Plugins/CMesh/mesh_optimizer/;$(Compressonator_RootDev)/Applications/_Plugins/Common/gltf/;./;$(Compressonator_RootDev)/Compute/;$(Compressonator_RootDev)/Applications/_Plugins/Common/;$(Compressonator_RootDev)/Source/GPU_Decode;$(Compressonator_RootDev)/Header/GPU_Decode/;$(Compressonator_RootDev)/Header/;$(Compressonator_RootDev)/Applications/_Plugins/CImage/BMP/;$(Compressonator_RootDev)/Header/Codec/ASTC/ARM/;$(Compressonator_RootDev)/Header/Codec/ASTC/;$(Compressonator_APPSDK)/include/;$(Compressonator_GLEW)/include/;$(Compressonator_BOOST)/;$(Compressonator_BOOST)/Include/shared/;$(Compressonator_BOOST)/Include/um/;$(Compressonator_BOOST)/Include/winrt/;$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/include/OpenEXR/;$(Compressonator_QT)/include/;$(Compressonator_QT)/include/QtGui/;$(Compressonator_QT)/include/QtCore/;$(Compressonator_RootDev)/Source/CMP_MeshOptimizer/;$(Compressonator_RootDev)/Source/CMP_MeshCompressor/Draco/src</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalLibraryDirectories>$(OutDir)/Plugins;$(Compressonator_RootDev)/Build/$(SolutionName)/$(Configuration)/$(Platform);$(Compressonator_QT)/lib;$(Compressonator_GLEW)/lib/$(ShortPlatform);$(Compressonator_OPENEXR)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ILMBASE)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_ZLIB)/$(SolutionName)/$(Platform)/lib/;$(Compressonator_BOOST)/$(Platform)/;$(Compressonator_BOOST)/lib/VC14/x86_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Compressonator_MD$(DebugSuffix).lib;GPU_Decode_MD$(DebugSuffix).lib;user32.lib;ole32.lib;glew32.lib;d3d11.lib;Gdi32.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib;IlmImf.lib;Iex.lib;half.lib;Imath.lib;IexMath.lib;CMP_MeshCompressor_MD$(DebugSuffix).lib</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>../CopyFiles.bat $(Compressonator_QT) $(Compressonator_OPENCV)\$(Platform)\$(SolutionName)\bin\$(DebugRelease)\ $(OUTDIR) $(Compressonator_RootDev) $(Compressonator_GLEW)\bin\$(ShortPlatform) $(Compressonator_VULKANDLL) $(DebugSuffix)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="../../_Plugins/Common/ATIFormats.cpp" />
+    <ClCompile Include="../../_Plugins/Common/cmdline.cpp" />
+    <ClCompile Include="../../_Plugins/Common/MIPS.cpp" />
+    <ClCompile Include="../../_Plugins/Common/PluginManager.cpp" />
+    <ClCompile Include="../../_Plugins/Common/TextureIO.cpp" />
+    <ClCompile Include="../Source/CompressonatorCLI.cpp" />
+    <ClCompile Include="..\..\_Plugins\Common\gltf\tiny_gltf2_utils.cpp" />
+    <ClCompile Include="..\..\_Plugins\Common\ModelData.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="../../_Plugins/Common/ATIFormats.h" />
+    <ClInclude Include="../../_Plugins/Common/cmdline.h" />
+    <ClInclude Include="../../_Plugins/Common/MIPS.h" />
+    <ClInclude Include="../../_Plugins/Common/PluginInterface.h" />
+    <ClInclude Include="../../_Plugins/Common/PluginManager.h" />
+    <ClInclude Include="../../_Plugins/Common/TextureIO.h" />
+    <ClInclude Include="../Source/AMDCompressCLI_Documentation.h" />
+    <ClInclude Include="..\..\_Plugins\Common\gltf\tiny_gltf2.h" />
+    <ClInclude Include="..\..\_Plugins\Common\gltf\tiny_gltf2_utils.h" />
+    <ClInclude Include="..\..\_Plugins\Common\ModelData.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../CopyFiles.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Resources\MainApp.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)/Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
