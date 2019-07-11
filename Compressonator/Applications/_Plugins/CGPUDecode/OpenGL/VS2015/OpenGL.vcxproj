@@ -38,7 +38,7 @@
     <ProjectGuid>{631200B6-C8F9-4069-A365-C1A43E420157}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>GPUDecode_OpenGL</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)/Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
