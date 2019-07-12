@@ -16,6 +16,7 @@
 //#define _TIMING
 
 #ifdef _TIMING
+	#define NOMINMAX
     #include <Windows.h>
     #define GetTime() GetTickCount()
     typedef DWORD _TIME;

@@ -29,6 +29,7 @@
 #ifdef _WIN32
 #ifndef DISABLE_TESTCODE
 #include "Compressonator.h"
+#define NOMINMAX
 #include "Windows.h"
 //uncomment to show image on console window for debug
 //#define SHOW_WINDOW  

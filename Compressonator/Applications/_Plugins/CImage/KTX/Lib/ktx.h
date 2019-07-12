@@ -150,6 +150,7 @@ These files are part of the SDL2 source distributed by the [SDL project]
 #if KTX_OPENGL
 
 	#ifdef _WIN32
+      #define NOMINMAX
 	  #include <windows.h>
       #undef KTX_USE_GETPROC  /* Must use GETPROC on Windows */
       #define KTX_USE_GETPROC 1

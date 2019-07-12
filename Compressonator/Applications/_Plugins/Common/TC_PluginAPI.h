@@ -35,6 +35,7 @@
 #define _TC_PLUGINAPI_INCLUDED_
 
 #ifdef _WIN32
+#define NOMINMAX
 #include <Windows.h>
 #include <tchar.h>
 #endif

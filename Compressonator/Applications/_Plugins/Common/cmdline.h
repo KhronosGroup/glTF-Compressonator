@@ -25,6 +25,7 @@
 #define _CMDLINE_H_
 
 #ifdef _WIN32
+#define NOMINMAX
 #include <windows.h>
 #include <tchar.h>
 #endif

@@ -19,6 +19,7 @@
 
 #include "stdafx.h"
 #include "Camera.h"
+#include <algorithm>
 
 //--------------------------------------------------------------------------------------
 //
@@ -32,7 +33,7 @@ void Camera::SetFov(float fovV, DWORD width, DWORD height)
     m_aspectRatio = width *1.f / height;
 
     m_fovV = fovV;
-    m_fovH = min(m_fovV * width / height, 3.1415f / 2);
+    m_fovH = std::min(m_fovV * width / height, 3.1415f / 2);
     m_fovV = m_fovH * height / width;
 
     float halfWidth = (float)width / 2.0f;

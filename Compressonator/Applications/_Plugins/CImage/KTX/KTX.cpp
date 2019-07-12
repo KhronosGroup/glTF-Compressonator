@@ -27,6 +27,7 @@
 #endif
 
 #include <stdio.h>
+#include <algorithm>
 #include "cKTX.h"
 
 #include <stdio.h>
@@ -1231,8 +1232,8 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         if ((w <= 1) || (h <= 1)) break;
         else
         {
-            w = max(1, w >> nMipLevel);
-            h = max(1, h >> nMipLevel);
+            w = std::max(1, w >> nMipLevel);
+            h = std::max(1, h >> nMipLevel);
         }
 
         totalByteRead = fread(&faceSize, 1, sizeof(khronos_uint32_t), pFile);

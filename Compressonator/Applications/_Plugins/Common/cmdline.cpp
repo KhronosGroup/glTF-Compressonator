@@ -69,6 +69,7 @@ using namespace tinygltf2;
 #endif
 
 #ifdef SHOW_PROCESS_MEMORY
+#define NOMINMAX
 #include "windows.h"
 #include "psapi.h"
 #endif

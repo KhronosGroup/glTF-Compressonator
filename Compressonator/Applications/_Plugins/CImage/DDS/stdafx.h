@@ -9,6 +9,7 @@
 
 #ifdef _WIN32
 // Windows Header Files:
+#define NOMINMAX
 #include <windows.h>
 #include <tchar.h>
 #endif

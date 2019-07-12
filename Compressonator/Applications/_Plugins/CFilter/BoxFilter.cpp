@@ -24,6 +24,7 @@
 
 #include "stdafx.h"
 #include <stdio.h>
+#include <algorithm>
 #include "BoxFilter.h"
 
 #include <stdio.h>
@@ -91,10 +92,10 @@ int Plugin_BoxFilter::TC_GenerateMIPLevels(MipSet *pMipSet, int nMinSize)
 
     while(nWidth > nMinSize && nHeight > nMinSize)
     {
-        nWidth = max(nWidth >> 1, 1);
-        nHeight = max(nHeight >> 1, 1);
+        nWidth = std::max(nWidth >> 1, 1);
+        nHeight = std::max(nHeight >> 1, 1);
         int nCurMipLevel = pMipSet->m_nMipLevels;
-        int maxFacesOrSlices = max((pMipSet->m_TextureType == TT_VolumeTexture) ? (MaxFacesOrSlices(pMipSet, nCurMipLevel-1)>>1) : MaxFacesOrSlices(pMipSet, nCurMipLevel-1), 1);
+        int maxFacesOrSlices = std::max((pMipSet->m_TextureType == TT_VolumeTexture) ? (MaxFacesOrSlices(pMipSet, nCurMipLevel-1)>>1) : MaxFacesOrSlices(pMipSet, nCurMipLevel-1), 1);
         for(int nFaceOrSlice=0; nFaceOrSlice<maxFacesOrSlices; nFaceOrSlice++)
         {
             MipLevel* pThisMipLevel = CMips->GetMipLevel(pMipSet, nCurMipLevel, nFaceOrSlice);
