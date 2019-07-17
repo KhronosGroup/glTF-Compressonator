@@ -39,6 +39,7 @@
 #pragma comment(lib, "EXR.lib")
 #pragma comment(lib, "KTX.lib")
 #pragma comment(lib, "TGA.lib")
+#pragma comment(lib, "HDR.lib")
 #pragma comment(lib, "IMGAnalysis.lib")
 
 extern void* make_Plugin_ASTC();
@@ -46,6 +47,7 @@ extern void* make_Plugin_BoxFilter();
 extern void* make_Plugin_DDS();
 extern void* make_Plugin_EXR();
 extern void* make_Plugin_TGA();
+extern void* make_Plugin_HDR();
 extern void* make_Plugin_KTX();
 #ifndef __APPLE__
 extern void* make_Plugin_CAnalysis();
@@ -320,6 +322,7 @@ int main(int argc, char* argv[])
     g_pluginManager.registerStaticPlugin("IMAGE", "DDS", (void*)make_Plugin_DDS);
     g_pluginManager.registerStaticPlugin("IMAGE", "EXR", (void*)make_Plugin_EXR);
     g_pluginManager.registerStaticPlugin("IMAGE", "TGA", (void*)make_Plugin_TGA);  // Use for load only, Qt will be used for Save
+    g_pluginManager.registerStaticPlugin("IMAGE", "HDR", (void*)make_Plugin_HDR);
     g_pluginManager.registerStaticPlugin("IMAGE", "KTX", (void*)make_Plugin_KTX);
 #ifndef __APPLE__
     g_pluginManager.registerStaticPlugin("IMAGE", "ANALYSIS", (void*)make_Plugin_CAnalysis);

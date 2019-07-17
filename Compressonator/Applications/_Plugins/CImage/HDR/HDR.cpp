@@ -641,21 +641,7 @@ TC_PluginError LoadHDR_G8_RLE(FILE* pFile, MipSet* pMipSet, HDRHeader& Header)
     return PE_OK;
 }
 
-CMP_BYTE CalcRunLength(CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
-{
-    CMP_BYTE* pNext = pThis + nOffset;
-    CMP_BYTE cRunLength = 1;
-
-    while(pNext < pEnd && memcmp(pThis, pNext, nSize) == 0 && cRunLength < 0x80)
-    {
-        cRunLength++;
-        pNext += nOffset;
-    }
-
-    return cRunLength;
-}
-
-CMP_BYTE CalcRawLength(CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
+CMP_BYTE CalcRawLength2(CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
 {
     CMP_BYTE* pNext = pThis + nOffset;
     CMP_BYTE cRawLength = 1;
@@ -679,7 +665,7 @@ CMP_BYTE CalcRawLength(CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
 //
 // Need to Fix this
 
-void SaveLineRLE(FILE* pFile, CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
+void SaveLineRLE2(FILE* pFile, CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nOffset)
 {
     while (pThis < pEnd)
     {
@@ -687,7 +673,7 @@ void SaveLineRLE(FILE* pFile, CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nO
         // Are the next two pixel the same ?
         if(pNext < pEnd && memcmp(pThis, pNext, nSize) == 0)
         {
-            CMP_BYTE cRunLength = CalcRunLength(pThis, pEnd, nSize, nOffset);
+            CMP_BYTE cRunLength = 0;
             CMP_BYTE cRepetitionCount = (cRunLength - 1) | 0x80;
             fwrite(&cRepetitionCount, sizeof(cRepetitionCount), 1, pFile);
             fwrite(pThis, nSize, 1, pFile);
@@ -695,7 +681,7 @@ void SaveLineRLE(FILE* pFile, CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nO
         }
         else
         {
-            CMP_BYTE cRawLength = CalcRawLength(pThis, pEnd, nSize, nOffset);
+            CMP_BYTE cRawLength = CalcRawLength2(pThis, pEnd, nSize, nOffset);
             CMP_BYTE cRepetitionCount = (cRawLength - 1);
             fwrite(&cRepetitionCount, sizeof(cRepetitionCount), 1, pFile);
             if(nSize == nOffset)
@@ -715,7 +701,7 @@ void SaveLineRLE(FILE* pFile, CMP_BYTE* pThis, CMP_BYTE* pEnd, int nSize, int nO
     }
 }
 
-TC_PluginError SaveRLE(FILE* pFile, const MipSet* pMipSet, int nSize, int nOffset)
+TC_PluginError SaveRLE2(FILE* pFile, const MipSet* pMipSet, int nSize, int nOffset)
 {
     CMP_DWORD dwPitch = pMipSet->m_nWidth * nOffset;
     for(int j=pMipSet->m_nHeight-1; j>=0; j--)
@@ -723,7 +709,7 @@ TC_PluginError SaveRLE(FILE* pFile, const MipSet* pMipSet, int nSize, int nOffse
         CMP_BYTE* pThis = (CMP_BYTE*) (HDR_CMips->GetMipLevel(pMipSet, 0)->m_pbData + (j * dwPitch));
         CMP_BYTE* pEnd = (CMP_BYTE*) (HDR_CMips->GetMipLevel(pMipSet, 0)->m_pbData + ((j+1) * dwPitch));
 
-        SaveLineRLE(pFile, pThis, pEnd, nSize, nOffset);
+        SaveLineRLE2(pFile, pThis, pEnd, nSize, nOffset);
     }
 
     fclose(pFile);
@@ -768,7 +754,7 @@ TC_PluginError SaveHDR_ARGB8888(FILE* pFile, const MipSet* pMipSet)
 
 TC_PluginError SaveHDR_ARGB8888_RLE(FILE* pFile, const MipSet* pMipSet)
 {
-    return SaveRLE(pFile, pMipSet, sizeof(CMP_COLOR), sizeof(CMP_COLOR));
+    return SaveRLE2(pFile, pMipSet, sizeof(CMP_COLOR), sizeof(CMP_COLOR));
 }
 
 TC_PluginError SaveHDR_RGB888(FILE* pFile, const MipSet* pMipSet)
@@ -792,7 +778,7 @@ TC_PluginError SaveHDR_RGB888(FILE* pFile, const MipSet* pMipSet)
 
 TC_PluginError SaveHDR_RGB888_RLE(FILE* pFile, const MipSet* pMipSet)
 {
-    return SaveRLE(pFile, pMipSet, 3, sizeof(CMP_COLOR));
+    return SaveRLE2(pFile, pMipSet, 3, sizeof(CMP_COLOR));
 }
 
 TC_PluginError SaveHDR_G8(FILE* pFile, const MipSet* pMipSet)
@@ -810,7 +796,7 @@ TC_PluginError SaveHDR_G8(FILE* pFile, const MipSet* pMipSet)
 
 TC_PluginError SaveHDR_G8_RLE(FILE* pFile, const MipSet* pMipSet)
 {
-    return SaveRLE(pFile, pMipSet, sizeof(CMP_BYTE), sizeof(CMP_BYTE));
+    return SaveRLE2(pFile, pMipSet, sizeof(CMP_BYTE), sizeof(CMP_BYTE));
 }
 
 
