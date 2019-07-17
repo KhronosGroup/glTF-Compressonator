@@ -65,8 +65,8 @@ XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Positioning%_DEBUG%.dll"       %BUILD_OUTDIR
 XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5OpenGL%_DEBUG%.dll"            %BUILD_OUTDIR%
 
 
-IF NOT EXIST %BUILD_OUTDIR%plugins\platforms mkdir %BUILD_OUTDIR%plugins\platforms
-XCopy /r /d /y "%BUILD_QTDIR%plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%plugins\platforms\
+IF NOT EXIST %BUILD_OUTDIR%plugins\platforms mkdir %BUILD_OUTDIR%platforms
+XCopy /r /d /y "%BUILD_QTDIR%plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%platforms\
 
 IF NOT EXIST %BUILD_OUTDIR%plugins\imageformats mkdir %BUILD_OUTDIR%plugins\imageformats
 XCopy /r /d /y "%BUILD_QTDIR%plugins\imageformats\qtga%_DEBUG%.dll"  %BUILD_OUTDIR%plugins\imageformats\
