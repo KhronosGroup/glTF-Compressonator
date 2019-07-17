@@ -39,32 +39,32 @@ IF "%PLATFORM%" == "Win32" goto :copy32
 IF "%PLATFORM%" == "x64" goto :copy64
 
 :copy32
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\bin\Qt5Core%_DEBUG%.dll"              %BUILD_OUTDIR%
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\bin\Qt5Gui%_DEBUG%.dll"               %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Core%_DEBUG%.dll"              %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Gui%_DEBUG%.dll"               %BUILD_OUTDIR%
 
 IF NOT EXIST %BUILD_OUTDIR%plugins\imageformats mkdir %BUILD_OUTDIR%plugins\imageformats
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\plugins\imageformats\qtga%_DEBUG%.dll"  %BUILD_OUTDIR%plugins\imageformats\
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\plugins\imageformats\qtiff%_DEBUG%.dll" %BUILD_OUTDIR%plugins\imageformats\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\imageformats\qtga%_DEBUG%.dll"  %BUILD_OUTDIR%plugins\imageformats\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\imageformats\qtiff%_DEBUG%.dll" %BUILD_OUTDIR%plugins\imageformats\
 
 IF NOT EXIST %BUILD_OUTDIR%plugins\platforms mkdir %BUILD_OUTDIR%plugins\platforms
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015\plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%plugins\platforms\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%plugins\platforms\
 
 XCopy /r /d /y "%BUILD_GLEWDIR%x86\glew32.dll"                               %BUILD_OUTDIR%
 XCopy /r /d /y "%BUILD_VULKANDIR%lib32\vulkan-1.dll"                         %BUILD_OUTDIR%
 goto :copyend
 
 :copy64
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\bin\Qt5Core%_DEBUG%.dll"              %BUILD_OUTDIR%
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\bin\Qt5Gui%_DEBUG%.dll"               %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Core%_DEBUG%.dll"              %BUILD_OUTDIR%
+XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Gui%_DEBUG%.dll"               %BUILD_OUTDIR%
 
 IF NOT EXIST %BUILD_OUTDIR%plugins\imageformats mkdir %BUILD_OUTDIR%plugins\imageformats
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\plugins\imageformats\qtga%_DEBUG%.dll"  %BUILD_OUTDIR%plugins\imageformats\
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\plugins\imageformats\qtiff%_DEBUG%.dll" %BUILD_OUTDIR%plugins\imageformats\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\imageformats\qtga%_DEBUG%.dll"  %BUILD_OUTDIR%plugins\imageformats\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\imageformats\qtiff%_DEBUG%.dll" %BUILD_OUTDIR%plugins\imageformats\
 
 IF NOT EXIST %BUILD_OUTDIR%plugins\platforms mkdir %BUILD_OUTDIR%plugins\platforms
-XCopy /r /d /y "%BUILD_QTDIR%msvc2015_64\plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%plugins\platforms\
+XCopy /r /d /y "%BUILD_QTDIR%plugins\platforms\qwindows%_DEBUG%.dll" %BUILD_OUTDIR%plugins\platforms\
 
 XCopy /r /d /y "%BUILD_GLEWDIR%x64\glew32.dll"                               %BUILD_OUTDIR%
 XCopy /r /d /y "%BUILD_VULKANDIR%lib\vulkan-1.dll"                           %BUILD_OUTDIR%
