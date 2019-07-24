@@ -1567,6 +1567,8 @@ bool GenerateImageProps(std::string ImageFile)
 
         PrintInfo("Mip Levels: %u\n", miplevel);
         PrintInfo("Format: %s\n", GetFormatDesc(g_MipSetIn.m_format));
+
+        PrintInfo("Cube Map: %s\n", (g_MipSetIn.m_TextureType == TT_CubeMap) ? "true" : "false");
     }
 
     return true;
