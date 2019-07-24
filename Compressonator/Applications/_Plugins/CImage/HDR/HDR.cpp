@@ -75,19 +75,11 @@ int Plugin_HDR::TC_PluginGetVersion(TC_PluginVersion* pPluginVersion)
 
 int Plugin_HDR::TC_PluginFileLoadTexture(const char* pszFilename, CMP_Texture *srcTexture)
 {
-    // TODO: Implement.
-
-    printf("Loading Texture\n");
-
     return PE_Unknown;
 }
 
 int Plugin_HDR::TC_PluginFileSaveTexture(const char* pszFilename, CMP_Texture *srcTexture)
 {
-    // TODO: Implement.
-
-    printf("Saving Texture\n");
-
     return PE_Unknown;
 }
 
@@ -106,13 +98,12 @@ int Plugin_HDR::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
     //
 
     pMipSet->m_ChannelFormat = CF_Float32;
-    pMipSet->m_TextureDataType = TDT_ARGB;
+    pMipSet->m_TextureDataType = TDT_XRGB;
     pMipSet->m_TextureType = TT_2D;
     pMipSet->m_nMipLevels = 1;
     pMipSet->m_nWidth = x;
     pMipSet->m_nHeight = y;
     pMipSet->m_nDepth = 1;
-    pMipSet->m_format = CMP_FORMAT_ARGB_32F;
 
     if (!HDR_CMips->AllocateMipSet(pMipSet, pMipSet->m_ChannelFormat, pMipSet->m_TextureDataType, pMipSet->m_TextureType, pMipSet->m_nWidth, pMipSet->m_nHeight, pMipSet->m_nDepth))
     {
@@ -154,9 +145,5 @@ int Plugin_HDR::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
 
 int Plugin_HDR::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSet)
 {
-    // TODO: Implement.
-
-    printf("Saving Texture with MipMap\n");
-
     return PE_Unknown;
 }
