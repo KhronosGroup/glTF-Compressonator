@@ -90,7 +90,7 @@ MipLevel* CMIPS::GetMipLevel(const MipSet* pMipSet, int nMipLevel,    int nFaceO
             assert(nFaceOrSlice > 6);
             return NULL;
         }        
-        return (pMipSet->m_pMipLevelTable)[nMipLevel * nDepth + nFaceOrSlice];
+        return (pMipSet->m_pMipLevelTable)[nMipLevel * 6 + nFaceOrSlice];
     case TT_VolumeTexture:
         while(whichMipLevel <= nMipLevel)
         {
@@ -134,7 +134,7 @@ int CMIPS::GetMaxMipLevels(int nWidth, int nHeight, int nDepth)
 
 bool CMIPS::AllocateMipLevelTable(MipLevelTable** ppMipLevelTable, int nMaxMipLevels, TextureType textureType, int nDepth, int& nLevelsToAllocate
 #ifdef USE_MIPSET_FACES
-    , int nFaces = 0
+    , int nFaces
 #endif
 )
 {
@@ -213,7 +213,7 @@ bool CMIPS::AllocateAllMipLevels(MipLevelTable* pMipLevelTable, TextureType /*te
 
 bool CMIPS::AllocateMipSet(MipSet* pMipSet, ChannelFormat channelFormat, TextureDataType textureDataType, TextureType textureType, int nWidth, int nHeight, int nDepth
 #ifdef USE_MIPSET_FACES
-    , int nFaces = 0
+    , int nFaces
 #endif
 )
 {
@@ -261,28 +261,10 @@ bool CMIPS::AllocateMipSet(MipSet* pMipSet, ChannelFormat channelFormat, Texture
     return true;
 }
 
-bool CMIPS::AllocateMipLevelData(MipLevel* pMipLevel, int nWidth, int nHeight, ChannelFormat channelFormat, TextureDataType textureDataType
-#ifdef USE_MIPSET_FACES
-    , int facedataSize
-#endif
-)
-
+bool CMIPS::AllocateMipLevelData(MipLevel* pMipLevel, int nWidth, int nHeight, ChannelFormat channelFormat, TextureDataType textureDataType)
 {
-    //TODO test
     assert(pMipLevel);
     assert(nWidth > 0 && nHeight > 0);
-
-#ifdef USE_MIPSET_FACES
-    if (facedataSize != 0) {  //facedataSize  = number of bytes each faces read from file
-        pMipLevel->m_dwLinearSize = facedataSize;
-        pMipLevel->m_nWidth = nWidth;
-        pMipLevel->m_nHeight = nHeight;
-
-        pMipLevel->m_pbData = reinterpret_cast<CMP_BYTE*>(malloc(pMipLevel->m_dwLinearSize));
-
-        return (pMipLevel->m_pbData != NULL);
-    }
-#endif
 
     CMP_DWORD dwBitsPerPixel;
     switch(channelFormat)

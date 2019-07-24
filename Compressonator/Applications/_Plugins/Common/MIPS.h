@@ -33,7 +33,7 @@
 
 #define MIPSET_PIN_DATA_ID     "69AEBDB3-5F67-436D-82C2-724FDC4972DA"
 
-// #define USE_MIPSET_FACES
+#define USE_MIPSET_FACES 1
 
 extern void(*PrintStatusLine)(char *);
 extern void PrintInfo(const char* Format, ...);
@@ -56,11 +56,7 @@ class CMIPS
         , int nFaces = 0
 #endif
     );
-    bool AllocateMipLevelData(MipLevel* pMipLevel, int nWidth, int nHeight, ChannelFormat channelFormat, TextureDataType textureDataType
-#ifdef USE_MIPSET_FACES
-        , int facedataSize =0
-#endif
-    );
+    bool AllocateMipLevelData(MipLevel* pMipLevel, int nWidth, int nHeight, ChannelFormat channelFormat, TextureDataType textureDataType);
     bool AllocateCompressedMipLevelData(MipLevel* pMipLevel, int nWidth, int nHeight, CMP_DWORD dwSize);
 
     void FreeMipSet(MipSet* pMipSet);

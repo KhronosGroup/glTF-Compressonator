@@ -1252,14 +1252,60 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         {
             // Determine buffer size and set Mip Set Levels 
             MipLevel *pMipLevel = KTX_CMips->GetMipLevel(pMipSet, nMipLevel, face);
+
+            int channelSize = 0;
+            int channelCount = 0;
+
             if (pMipSet->m_compressed)
+            {
                 KTX_CMips->AllocateCompressedMipLevelData(pMipLevel, w, h, faceSizeRounded);
+            }
             else
-                KTX_CMips->AllocateMipLevelData(pMipLevel, w, h, pMipSet->m_ChannelFormat, pMipSet->m_TextureDataType
-#ifdef USE_MIPSET_FACES
-                    , faceSizeRounded
-#endif
-                );
+            {
+                switch (fheader.glType)
+                {
+                    case GL_UNSIGNED_BYTE:
+                        channelSize = 1;
+                        break;
+                    case GL_UNSIGNED_SHORT:
+                        channelSize = 2;
+                        break;
+                    case GL_HALF_FLOAT:
+                        channelSize = 2;
+                        break;
+                    case GL_FLOAT:
+                        channelSize = 4;
+                        break;
+                    default:
+                        return -1;
+                }
+
+                switch (fheader.glFormat)
+                {
+                case GL_RED:
+                    channelCount = 1;
+                    break;
+                case GL_RG:
+                    channelCount = 2;
+                    break;
+                case GL_RGB:
+                    channelCount = 3;
+                    break;
+                case GL_BGR:
+                    channelCount = 3;
+                    break;
+                case GL_RGBA:
+                    channelCount = 4;
+                    break;
+                case GL_BGRA:
+                    channelCount = 4;
+                    break;
+                default:
+                    return -1;
+                }
+
+                KTX_CMips->AllocateMipLevelData(pMipLevel, w, h, pMipSet->m_ChannelFormat, pMipSet->m_TextureDataType);
+            }
 
             CMP_BYTE* pData = (CMP_BYTE*)(pMipLevel->m_pbData);
 
@@ -1271,16 +1317,60 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
                 return -1;
             }
           
-            //read image data
-            const unsigned int bytesRead = fread(pData, 1, faceSizeRounded, pFile);
+            //
+            // Read image data into teporrary buffer
+            //
 
-            if (bytesRead != faceSizeRounded)
+            size_t readSize = channelSize * channelCount * w * h;
+            std::vector<uint8_t> pixelData(readSize);
+
+            if (!pMipSet->m_compressed)
             {
-                if (KTX_CMips)
-                    KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) Read image data failed. Unexpectec EOF. Format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, fheader.glFormat);
-                fclose(pFile);
-                return -1;
-            } 
+                const unsigned int bytesRead = fread(&pixelData[0], 1, readSize, pFile);
+
+                if (bytesRead != readSize)
+                {
+                    if (KTX_CMips)
+                        KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) Read image data failed. Unexpectec EOF. Format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, fheader.glFormat);
+                    fclose(pFile);
+                    return -1;
+                }
+            }
+            else
+            {
+                const unsigned int bytesRead = fread(pData, 1, faceSizeRounded, pFile);
+
+                if (bytesRead != faceSizeRounded)
+                {
+                    if (KTX_CMips)
+                        KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) Read image data failed. Unexpectec EOF. Format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, fheader.glFormat);
+                    fclose(pFile);
+                    return -1;
+                }
+            }
+
+            //
+
+            if (!pMipSet->m_compressed)
+            {
+                int pixelSize = channelCount * channelSize;
+                int targetPixelSize = channelCount * channelSize;
+                if (channelCount == 3)
+                {
+                    // XRGB conversion.
+                    targetPixelSize = 4 * channelSize;
+                }
+
+                int py = 0;
+                for (py = 0; py < h; py++)
+                {
+                    int px = 0;
+                    for (px = 0; px < w; px++)
+                    {
+                        memcpy(&pData[targetPixelSize * px + py * targetPixelSize * w], &pixelData[pixelSize * px + py * pixelSize * w], pixelSize);
+                    }
+                }
+            }
         }
        
     }
