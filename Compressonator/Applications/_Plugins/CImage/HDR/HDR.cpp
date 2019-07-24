@@ -85,6 +85,13 @@ int Plugin_HDR::TC_PluginFileSaveTexture(const char* pszFilename, CMP_Texture *s
 
 int Plugin_HDR::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSet)
 {
+    if (!pszFilename || !pMipSet)
+    {
+        return PE_Unknown;
+    }
+
+    //
+
     int x = 0;
     int y = 0;
     int channels_in_file = 0;
@@ -145,5 +152,27 @@ int Plugin_HDR::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
 
 int Plugin_HDR::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSet)
 {
-    return PE_Unknown;
+    if (!pszFilename || !pMipSet)
+    {
+        return PE_Unknown;
+    }
+
+    //
+
+    if (pMipSet->m_TextureDataType != TDT_XRGB && pMipSet->m_TextureDataType != TDT_ARGB)
+    {
+        return PE_Unknown;
+    }
+
+    //
+
+    CMP_FLOAT* pData = HDR_CMips->GetMipLevel(pMipSet, 0)->m_pfData;
+
+    int result = stbi_write_hdr(pszFilename, pMipSet->m_nWidth, pMipSet->m_nHeight, 4, (const float*)pData);
+    if (!result)
+    {
+        return PE_Unknown;
+    }
+
+    return PE_OK;    
 }
