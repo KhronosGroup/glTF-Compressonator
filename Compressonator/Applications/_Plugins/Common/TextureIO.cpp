@@ -128,8 +128,11 @@ int MaxFacesOrSlices(const MipSet* pMipSet, int nMipLevel)
     if(pMipSet->m_nDepth < 1)
         return 0;
 
-    if(pMipSet->m_TextureType == TT_2D || pMipSet->m_TextureType == TT_CubeMap)
+    if(pMipSet->m_TextureType == TT_2D)
         return pMipSet->m_nDepth;
+
+    if (pMipSet->m_TextureType == TT_CubeMap)
+        return 6;
 
     int nMaxSlices = pMipSet->m_nDepth;
     for(int i=0; i<pMipSet->m_nMipLevels; i++)

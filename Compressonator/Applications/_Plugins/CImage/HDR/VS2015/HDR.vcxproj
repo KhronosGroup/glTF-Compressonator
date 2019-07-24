@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4E9C26FF-C126-467F-8F41-7EEA09D620F4}</ProjectGuid>
+    <ProjectGuid>{9A48007E-AC6B-41BF-94E9-A5DEF84D8939}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>HDR</ProjectName>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>

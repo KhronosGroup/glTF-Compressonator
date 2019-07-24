@@ -1232,8 +1232,8 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         if ((w <= 1) || (h <= 1)) break;
         else
         {
-            w = std::max(1, w >> nMipLevel);
-            h = std::max(1, h >> nMipLevel);
+            w = std::max(1, pMipSet->m_nWidth >> nMipLevel);
+            h = std::max(1, pMipSet->m_nHeight >> nMipLevel);
         }
 
         totalByteRead = fread(&faceSize, 1, sizeof(khronos_uint32_t), pFile);
@@ -1394,16 +1394,16 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
 
     //using libktx
     KTX_texture_info textureinfo;
-    KTX_image_info* inputMip = new KTX_image_info[pMipSet->m_nMipLevels];
-
-    unsigned pDataLen = 0;
-    CMP_BYTE* pData = NULL;
-    bool isCompressed = false;
-
     if (pMipSet->m_TextureType == TT_CubeMap)
         textureinfo.numberOfFaces = 6;
     else
         textureinfo.numberOfFaces = 1;
+
+    KTX_image_info* inputMip = new KTX_image_info[pMipSet->m_nMipLevels * textureinfo.numberOfFaces];
+
+    unsigned pDataLen = 0;
+    CMP_BYTE* pData = NULL;
+    bool isCompressed = false;
 
     //todo: handle array textures
     textureinfo.numberOfArrayElements = 0;
@@ -1428,8 +1428,8 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     {
         for (int nMipLevel = 0; nMipLevel < pMipSet->m_nMipLevels; nMipLevel++)
         {
-            inputMip[nMipLevel].size = KTX_CMips->GetMipLevel(pMipSet, nMipLevel)->m_dwLinearSize;
-            inputMip[nMipLevel].data = KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_pbData;
+            inputMip[nSlice + nMipLevel * nSlices].size = KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_dwLinearSize;
+            inputMip[nSlice + nMipLevel * nSlices].data = KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_pbData;
         }
     }
 
@@ -1700,7 +1700,7 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
 
     textureinfo.numberOfMipmapLevels = pMipSet->m_nMipLevels;
 
-    KTX_error_code save = ktxWriteKTXF(pFile, &textureinfo, pDataLen, pData, pMipSet->m_nMipLevels, inputMip);
+    KTX_error_code save = ktxWriteKTXF(pFile, &textureinfo, pDataLen, pData, textureinfo.numberOfMipmapLevels * textureinfo.numberOfFaces, inputMip);
     if (save == KTX_SUCCESS) {
         fclose(pFile);
     }
