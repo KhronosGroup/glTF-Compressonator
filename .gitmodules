@@ -23,3 +23,6 @@
 	path = Common/Lib/Ext/OpenEXR
 	url = https://github.com/GPUOpen-Tools/common-lib-ext-OpenEXR-2.2.git
 
+[submodule "Compressonator/Applications/_Plugins/KTX2"]
+	path = Compressonator/Applications/_Plugins/KTX2
+	url = https://github.com/KhronosGroup/KTX-Software
