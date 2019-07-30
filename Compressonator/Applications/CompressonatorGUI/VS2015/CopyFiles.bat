@@ -46,6 +46,7 @@ IF NOT EXIST %BUILD_OUTDIR%plugins mkdir %BUILD_OUTDIR%plugins
 IF NOT EXIST %BUILD_OUTDIR%WelcomePage mkdir %BUILD_OUTDIR%WelcomePage 
 XCopy /e /d /y "%BUILD_SOLUTIONDIR%..\WelcomePage" "%BUILD_OUTDIR%WelcomePage"
 
+XCopy /r /d /y "%BUILD_SOLUTIONDIR%..\..\..\..\Common\Lib\Ext\KTX2\build\msvs\x64\vs2015\Debug\libktx.gl.dll"       %BUILD_OUTDIR%
 
 XCopy /r /d /y "%BUILD_QTDIR%bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
 XCopy /r /d /y "%BUILD_QTDIR%bin\libEGL%_DEBUG%.dll"               %BUILD_OUTDIR%

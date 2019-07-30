@@ -32,6 +32,8 @@ XCopy /r /d /y "%BUILD_ROOT%\Compute\*.*"                                       
 
 IF NOT EXIST %BUILD_OUTDIR%plugins mkdir %BUILD_OUTDIR%plugins 
 
+XCopy /r /d /y "%BUILD_ROOT%..\Common\Lib\Ext\KTX2\build\msvs\x64\vs2015\Debug\libktx.gl.dll"       %BUILD_OUTDIR%
+
 XCopy /r /d /y "%BUILD_QTDIR%bin\libGLESv2%_DEBUG%.dll"            %BUILD_OUTDIR%
 XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Core%_DEBUG%.dll"              %BUILD_OUTDIR%
 XCopy /r /d /y "%BUILD_QTDIR%bin\Qt5Gui%_DEBUG%.dll"               %BUILD_OUTDIR%

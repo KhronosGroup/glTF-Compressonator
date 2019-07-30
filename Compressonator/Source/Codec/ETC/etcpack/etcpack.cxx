@@ -239,7 +239,7 @@ typedef struct KTX_header_t
     unsigned int pixelDepth;
     unsigned int numberOfArrayElements;
     unsigned int numberOfFaces;
-    unsigned int numberOfMipmapLevels;
+    unsigned int numberOfMipLevels;
     unsigned int bytesOfKeyValueData;
 }
 KTX_header;
@@ -15713,7 +15713,7 @@ void compressImageFile(uint8 *img, uint8 *alphaimg,int width,int height,char *ds
             //we only support single non-mipmapped non-cubemap textures..
             header.numberOfArrayElements=0;
             header.numberOfFaces=1;
-            header.numberOfMipmapLevels=1;
+            header.numberOfMipLevels=1;
 
             //and no metadata..
             header.bytesOfKeyValueData=0;

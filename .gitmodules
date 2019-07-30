@@ -25,3 +25,4 @@
 [submodule "Common/Lib/Ext/KTX2"]
 	path = Common/Lib/Ext/KTX2
 	url = https://github.com/KhronosGroup/KTX-Software.git
+    branch = ktx2
