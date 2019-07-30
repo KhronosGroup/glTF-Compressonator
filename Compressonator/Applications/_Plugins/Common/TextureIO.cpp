@@ -744,7 +744,8 @@ MipSet* DecompressMIPSet(MipSet *MipSetIn, CMP_GPUDecode decodeWith, Config *con
         MipSetIn->m_TextureType,
         MipSetIn->m_nWidth,
         MipSetIn->m_nHeight,
-        MipSetIn->m_nDepth))
+        MipSetIn->m_nDepth,
+        (MipSetIn->m_TextureType == TT_CubeMap) ? 6 : 1))
     {
         configSetting->errMessage = "Memory Error(2): allocating MIPSet Output buffer.";
         PrintInfo("Memory Error(2): allocating MIPSet Output buffer\n");
