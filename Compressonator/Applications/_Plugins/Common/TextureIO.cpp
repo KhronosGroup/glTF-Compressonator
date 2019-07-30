@@ -719,6 +719,7 @@ MipSet* DecompressMIPSet(MipSet *MipSetIn, CMP_GPUDecode decodeWith, Config *con
     MipSetOut->m_CubeFaceMask = MipSetIn->m_CubeFaceMask;
     MipSetOut->m_Flags = MipSetIn->m_Flags;
     MipSetOut->m_nDepth = MipSetIn->m_nDepth;
+    MipSetOut->m_nMipLevels = MipSetIn->m_nMipLevels;
     MipSetOut->m_nMaxMipLevels = MipSetIn->m_nMaxMipLevels;
     MipSetOut->m_nHeight = MipSetIn->m_nHeight;
     MipSetOut->m_nWidth = MipSetIn->m_nWidth;
