@@ -136,6 +136,7 @@ int main(int argc, char **argv)
         g_pluginManager.registerStaticPlugin("IMAGE",  "DDS",       make_Plugin_DDS);
         g_pluginManager.registerStaticPlugin("IMAGE",  "EXR",       make_Plugin_EXR);
         g_pluginManager.registerStaticPlugin("IMAGE",  "KTX",       make_Plugin_KTX);
+        g_pluginManager.registerStaticPlugin("IMAGE",  "KTX2",      make_Plugin_KTX);
         g_pluginManager.registerStaticPlugin("IMAGE",  "HDR",       make_Plugin_HDR);
 
 #ifdef USE_CRN

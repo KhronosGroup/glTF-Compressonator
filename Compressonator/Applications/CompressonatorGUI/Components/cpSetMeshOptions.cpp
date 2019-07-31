@@ -134,6 +134,7 @@ CSetMeshOptions::CSetMeshOptions(const QString title, QWidget *parent) : QDialog
     // Default output format
     m_fileFormats->addItem("DDS");
     m_fileFormats->addItem("KTX");
+    m_fileFormats->addItem("KTX2");
 
     // =================================================
     // Destination File 
@@ -474,6 +475,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         astcbitrateOptions = false;
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_fileFormats->setCurrentIndex(0);
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
@@ -490,6 +492,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -508,6 +511,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -527,6 +531,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A four component compressed texture format with explicit alpha for Microsoft DirectX10. DXT3 identical to BC2. Eight bits per pixel.");
@@ -541,6 +546,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -562,6 +568,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -580,6 +587,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed RGB format.");
@@ -594,6 +602,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed ARGB format with explicit alpha.");
@@ -608,6 +617,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed ARGB format with interpolated alpha.");
@@ -622,6 +632,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(" DXT5 with the red component swizzled into the alpha channel. Eight bits per pixel.");
@@ -636,6 +647,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("swizzled DXT5 format with the green component swizzled into the alpha channel. Eight bits per pixel.");
@@ -650,6 +662,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(" swizzled DXT5 format with the green component swizzled into the alpha channel & the blue component swizzled into the green channel. Eight bits per pixel.");
@@ -664,6 +677,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("swizzled DXT5 format with the green component swizzled into the alpha channel & the red component swizzled into the green channel. Eight bits per pixel.");
@@ -678,6 +692,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("swizzled DXT5 format with the blue component swizzled into the alpha channel. Eight bits per pixel.");
@@ -692,6 +707,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("two-component swizzled DXT5 format with the red component swizzled into the alpha channel & the green component in the green channel. Eight bits per pixel.");
@@ -706,6 +722,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("The latest block Compression (BC) format designed to support high-quality compression of RGB and RGBA bytes color spaces.");
@@ -721,6 +738,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("ETC (Ericsson Texture Compression, lossy texture compression developed with Ericsson Research.)");
@@ -736,6 +754,7 @@ void CSetMeshOptions::compressionValueChanged(QVariant &value)
         extension = "KTX";
         m_fileFormats->addItem("ASTC");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("ASTC (Adaptive Scalable Texture Compression),lossy block-based texture compression developed with ARM.");

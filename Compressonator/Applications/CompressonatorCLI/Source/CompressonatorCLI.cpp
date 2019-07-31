@@ -324,6 +324,7 @@ int main(int argc, char* argv[])
     g_pluginManager.registerStaticPlugin("IMAGE", "TGA", (void*)make_Plugin_TGA);  // Use for load only, Qt will be used for Save
     g_pluginManager.registerStaticPlugin("IMAGE", "HDR", (void*)make_Plugin_HDR);
     g_pluginManager.registerStaticPlugin("IMAGE", "KTX", (void*)make_Plugin_KTX);
+    g_pluginManager.registerStaticPlugin("IMAGE", "KTX2", (void*)make_Plugin_KTX);
 #ifndef __APPLE__
     g_pluginManager.registerStaticPlugin("IMAGE", "ANALYSIS", (void*)make_Plugin_CAnalysis);
 #endif

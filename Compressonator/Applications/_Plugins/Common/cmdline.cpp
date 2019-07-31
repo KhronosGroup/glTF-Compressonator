@@ -2216,7 +2216,7 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
 
             // Allocate output MipSet
             if (!g_CMIPS->AllocateMipSet(&g_MipSetOut, g_MipSetOut.m_ChannelFormat, g_MipSetOut.m_TextureDataType, p_MipSetIn->m_TextureType,
-                                         p_MipSetIn->m_nWidth, p_MipSetIn->m_nHeight, p_MipSetIn->m_nDepth))
+                                         p_MipSetIn->m_nWidth, p_MipSetIn->m_nHeight, p_MipSetIn->m_nDepth, (p_MipSetIn->m_TextureType == TT_CubeMap) ? 6 : 1))
             {
                 PrintInfo("Memory Error(2): allocating MIPSet Output buffer\n");
                 cleanup(Delete_gMipSetIn, SwizzledMipSetIn);
