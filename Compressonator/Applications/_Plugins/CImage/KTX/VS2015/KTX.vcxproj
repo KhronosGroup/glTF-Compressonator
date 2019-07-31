@@ -241,7 +241,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../;../../../../../../Common/Lib/Ext/KTX2/other_include;../../../../../../Common/Lib/Ext/KTX2/include;../../../../../../Common/Lib/Ext/KTX2/lib;../../../../../../Common/Lib/Ext/glew/1.9.0/include;../../../../../Applications/_Plugins/;../../../../../Applications/_Plugins/Common;../../../../../header;$(AMDCOMPRESS_ROOT)/SDK/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../;../../../../../../Common/Lib/Ext/KTX2/other_include;../../../../../../Common/Lib/Ext/KTX2/include;../../../../../../Common/Lib/Ext/KTX2/lib;../../../../../../Common/Lib/Ext/glew/1.9.0/include;../../../../../Applications/_Plugins/;../../../../../Applications/_Plugins/Common;../../../../../header;$(AMDCOMPRESS_ROOT)/SDK/include;$(VK_SDK_PATH)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>

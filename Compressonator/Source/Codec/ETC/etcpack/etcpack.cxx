@@ -776,6 +776,13 @@ void readArguments(int argc,char *argv[],char* src,char *dst)
         ktxFile=true;
         printf("decompressing ktx\n");
     }
+    else if(!strncmp(&src[q],".ktx2",5))
+    {
+        // First argument is .ktx. Decompress.
+        mode = MODE_UNCOMPRESS;            // uncompress from binary file format .pkm
+        ktxFile=true;
+        printf("decompressing ktx2\n");
+    }
     else
     {
         // The first argument was not .pkm. The second argument must then be .pkm.
@@ -796,6 +803,13 @@ void readArguments(int argc,char *argv[],char* src,char *dst)
             ktxFile=true;
             mode = MODE_COMPRESS;            // compress to binary file format .pkm
             printf("compressing to ktx\n");
+        }
+        else if(!strncmp(&dst[q],".ktx2",5))
+        {
+            // Second argument is .ktx2. Compress.
+            ktxFile=true;
+            mode = MODE_COMPRESS;            // compress to binary file format .pkm
+            printf("compressing to ktx2\n");
         }
         else
         {

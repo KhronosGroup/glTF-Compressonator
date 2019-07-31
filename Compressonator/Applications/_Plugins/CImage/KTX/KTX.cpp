@@ -604,6 +604,12 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     assert(pszFilename);
     assert(pMipSet);
 
+    bool isKTX2 = false;
+    if (pszFilename[strlen(pszFilename) - 1] == '2')
+    {
+        isKTX2 = true;
+    }
+
     if (pMipSet->m_pMipLevelTable == NULL)
     {
         if (KTX_CMips)
@@ -641,20 +647,13 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     case CMP_FORMAT_RGB_888 :
     case CMP_FORMAT_RG_8 :
     case CMP_FORMAT_R_8 :
-        isCompressed = false;
-        break;
     case  CMP_FORMAT_ARGB_2101010 :      
-        break;
     case  CMP_FORMAT_ARGB_16 :   
-        break;
     case  CMP_FORMAT_RG_16 :
-        break;
     case  CMP_FORMAT_R_16 :      
-        break;
     case  CMP_FORMAT_ARGB_16F :                 
     case  CMP_FORMAT_RG_16F :                   
     case  CMP_FORMAT_R_16F : 
-        break;
     case  CMP_FORMAT_ARGB_32F :                 
     case  CMP_FORMAT_RGB_32F :                  
     case  CMP_FORMAT_RG_32F :                   
@@ -747,6 +746,7 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
         if (!isCompressed)
         {
             textureCreateInfo.glInternalformat = GL_RGBA8;
+            textureCreateInfo.vkFormat = VK_FORMAT_R8G8B8A8_UNORM;
         }
         else
         {
@@ -755,136 +755,174 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
             case CMP_FORMAT_BC1:
             case CMP_FORMAT_DXT1:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_BC2:
             case CMP_FORMAT_DXT3:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_BC3:
             case CMP_FORMAT_DXT5:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_BC7:
                 textureCreateInfo.glInternalformat = RGB_BP_UNorm;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATI1N:
                 textureCreateInfo.glInternalformat = R_ATI1N_UNorm;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATI2N:
                 textureCreateInfo.glInternalformat = R_ATI1N_SNorm;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATI2N_XY:
                 textureCreateInfo.glInternalformat = RG_ATI2N_UNorm;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATI2N_DXT5:
                 textureCreateInfo.glInternalformat = RG_ATI2N_SNorm;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATC_RGB:
                 textureCreateInfo.glInternalformat = ATC_RGB_AMD;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATC_RGBA_Explicit:
                 textureCreateInfo.glInternalformat = ATC_RGBA_EXPLICIT_ALPHA_AMD;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_ATC_RGBA_Interpolated:
                 textureCreateInfo.glInternalformat = ATC_RGBA_INTERPOLATED_ALPHA_AMD;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_BC4:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RED_RGTC1;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_BC5:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RG_RGTC2;
+                // TODO: KTX2/Vulkan
                 break;
             case  CMP_FORMAT_BC6H:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT;
+                textureCreateInfo.vkFormat = VK_FORMAT_BC6H_UFLOAT_BLOCK;
                 break;
             case  CMP_FORMAT_BC6H_SF:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT;
+                textureCreateInfo.vkFormat = VK_FORMAT_BC6H_SFLOAT_BLOCK;
                 break;
             case  CMP_FORMAT_ASTC:
                 if ((pMipSet->m_nBlockWidth == 4) && (pMipSet->m_nBlockHeight == 4))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_4x4_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 5) && (pMipSet->m_nBlockHeight == 4))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_5x4_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 5) && (pMipSet->m_nBlockHeight == 5))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_5x5_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 6) && (pMipSet->m_nBlockHeight == 5))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_6x5_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 6) && (pMipSet->m_nBlockHeight == 6))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_6x6_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 8) && (pMipSet->m_nBlockHeight == 5))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_8x5_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 8) && (pMipSet->m_nBlockHeight == 6))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_8x6_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 8) && (pMipSet->m_nBlockHeight == 8))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_8x8_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 10) && (pMipSet->m_nBlockHeight == 5))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_10x5_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 10) && (pMipSet->m_nBlockHeight == 6))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_10x6_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 10) && (pMipSet->m_nBlockHeight == 8))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_10x8_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 10) && (pMipSet->m_nBlockHeight == 10))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_10x10_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 12) && (pMipSet->m_nBlockHeight == 10))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_12x10_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else if ((pMipSet->m_nBlockWidth == 12) && (pMipSet->m_nBlockHeight == 12))
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_12x12_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 else
                 {
                     textureCreateInfo.glInternalformat = GL_COMPRESSED_RGBA_ASTC_4x4_KHR;
+                    // TODO: KTX2/Vulkan
                 }
                 break;
             case CMP_FORMAT_ETC_RGB:
                 textureCreateInfo.glInternalformat = ETC1_RGB8_OES;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_ETC2_RGB:
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGB8_ETC2;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_xGBR:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_xGBR;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_RxBG:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_RxBG;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_RBxG:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_RBxG;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_xRBG:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_xRBG;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_RGxB:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_RGxB;
+                // TODO: KTX2/Vulkan
                 break;
             case CMP_FORMAT_DXT5_xGxR:
                 textureCreateInfo.glInternalformat = COMPRESSED_FORMAT_DXT5_xGxR;
+                // TODO: KTX2/Vulkan
                 break;
             }
         }
@@ -896,9 +934,22 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
 
     //
 
+    ktxTexture1* texture1 = nullptr;
+    ktxTexture2* texture2 = nullptr;
 
-    ktxTexture1* texture = nullptr;
-    KTX_error_code createStatus = ktxTexture1_Create(&textureCreateInfo, KTX_TEXTURE_CREATE_ALLOC_STORAGE, &texture);
+    ktxTexture* texture = nullptr;
+
+    KTX_error_code createStatus;
+    if (!isKTX2)
+    {
+        createStatus = ktxTexture1_Create(&textureCreateInfo, KTX_TEXTURE_CREATE_ALLOC_STORAGE, &texture1);
+        texture = ktxTexture(texture1);
+    }
+    else
+    {
+        createStatus = ktxTexture2_Create(&textureCreateInfo, KTX_TEXTURE_CREATE_ALLOC_STORAGE, &texture2);
+        texture = ktxTexture(texture2);
+    }
     if (createStatus != KTX_SUCCESS)
     {
         if (KTX_CMips)
@@ -913,7 +964,8 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     {
         for (int nMipLevel = 0; nMipLevel < pMipSet->m_nMipLevels; nMipLevel++)
         {
-            KTX_error_code setMemory = ktxTexture_SetImageFromMemory(ktxTexture(texture), nMipLevel, 0, nSlice, KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_pbData, KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_dwLinearSize);
+            KTX_error_code setMemory = setMemory = ktxTexture_SetImageFromMemory(texture, nMipLevel, 0, nSlice, KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_pbData, KTX_CMips->GetMipLevel(pMipSet, nMipLevel, nSlice)->m_dwLinearSize);
+
             if (setMemory != KTX_SUCCESS)
             {
                 return -1;
@@ -921,7 +973,7 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
         }
     }
 
-    KTX_error_code save = ktxTexture_WriteToNamedFile(ktxTexture(texture), pszFilename);
+    KTX_error_code save = ktxTexture_WriteToNamedFile(texture, pszFilename);
     if (save != KTX_SUCCESS)
     {
         return -1;

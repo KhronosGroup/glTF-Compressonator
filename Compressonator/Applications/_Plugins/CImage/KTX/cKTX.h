@@ -27,6 +27,7 @@
 #include "PluginInterface.h"
 #include "stdint.h"
 #include "ktx.h"
+#include "ktxvulkan.h"
 #include "ktxint.h"
 #include "KHR/khrplatform.h"
 #include "GL/glew.h"

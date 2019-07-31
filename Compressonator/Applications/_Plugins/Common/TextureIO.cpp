@@ -188,6 +188,11 @@ bool IsDestinationUnCompressed(const char *fname)
         isuncompressed = false;
     }
     else
+    if (file_extension.compare(".ktx2") == 0)
+    {
+        isuncompressed = false;
+    }
+    else
     if(file_extension.compare(".raw") == 0)
     {
         isuncompressed = false;
