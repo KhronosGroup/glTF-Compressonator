@@ -42,6 +42,7 @@
 #endif
 
 #include <sstream>
+#include "gl_format.h"
 
 // Feature is been removed as of Aug 2016
 // #define CMP_Texture_IO_SUPPORTED
@@ -109,9 +110,51 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, CMP_Texture *s
 
 int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSet)
 {
-    ktxTexture1* texture = nullptr;
+    assert(pszFilename);
+    assert(pMipSet);
 
-    KTX_error_code loadStatus = ktxTexture1_CreateFromNamedFile(pszFilename, KTX_TEXTURE_CREATE_LOAD_IMAGE_DATA_BIT, &texture);
+    bool isKTX2 = false;
+    if (pszFilename[strlen(pszFilename) - 1] == '2')
+    {
+        isKTX2 = true;
+    }
+
+    ktxTexture1* texture1 = nullptr;
+    ktxTexture2* texture2 = nullptr;
+
+    ktxTexture* texture = nullptr;
+
+    KTX_error_code loadStatus;
+
+    bool isCompressed = false;
+    ktx_uint32_t glInternalformat;
+    ktx_uint32_t glType;
+    ktx_uint32_t glFormat;
+    if (!isKTX2)
+    {
+        loadStatus = ktxTexture1_CreateFromNamedFile(pszFilename, KTX_TEXTURE_CREATE_LOAD_IMAGE_DATA_BIT, &texture1);
+
+        glInternalformat = texture1->glInternalformat;
+        glType = texture1->glType;
+        glFormat = texture1->glFormat;
+
+        texture = ktxTexture(texture1);
+
+        isCompressed = texture->isCompressed;
+    }
+    else
+    {
+        loadStatus = ktxTexture2_CreateFromNamedFile(pszFilename, KTX_TEXTURE_CREATE_LOAD_IMAGE_DATA_BIT, &texture2);
+
+        glInternalformat = glGetInternalFormatFromVkFormat((VkFormat)texture2->vkFormat);
+        glType = glGetTypeFromInternalFormat(glInternalformat); 
+        glFormat = glGetFormatFromInternalFormat(glInternalformat);
+
+        texture = ktxTexture(texture2);
+
+        isCompressed = texture->isCompressed;
+    }
+    
     if (loadStatus != KTX_SUCCESS)
     {
         if (KTX_CMips)
@@ -121,7 +164,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         return -1;
     }
 
-    if (texture->isCompressed)
+    if (isCompressed)
     {
         pMipSet->m_compressed   = true;
         pMipSet->m_nBlockHeight = 4;
@@ -129,7 +172,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         pMipSet->m_nBlockDepth  = 1;
         pMipSet->m_ChannelFormat = CF_Compressed;
 
-        switch (texture->glInternalformat)
+        switch (glInternalformat)
         {
         case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
             pMipSet->m_format = CMP_FORMAT_BC1;
@@ -302,7 +345,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         default:
             if (KTX_CMips)
             {
-                KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) unsupported internl GL format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, texture->glInternalformat);
+                KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) unsupported internl GL format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, glInternalformat);
             }
             return -1;
         }
@@ -310,11 +353,11 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
     else
     {
         pMipSet->m_compressed = false;
-        switch (texture->glType)
+        switch (glType)
         {
         case GL_UNSIGNED_BYTE:
             pMipSet->m_ChannelFormat = CF_8bit;
-            switch (texture->glFormat)
+            switch (glFormat)
             {
             case GL_RED:
                 pMipSet->m_format = CMP_FORMAT_R_8;
@@ -347,7 +390,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
             break;
         case GL_UNSIGNED_SHORT:
             pMipSet->m_ChannelFormat = CF_16bit;
-            switch (texture->glFormat)
+            switch (glFormat)
             {
             case GL_RED:
                 pMipSet->m_format = CMP_FORMAT_R_16;
@@ -370,7 +413,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
             break;
         case GL_HALF_FLOAT:
             pMipSet->m_ChannelFormat = CF_Float16;
-            switch (texture->glFormat)
+            switch (glFormat)
             {
             case GL_RED:
                 pMipSet->m_format = CMP_FORMAT_R_16F;
@@ -398,7 +441,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
             break;
         case GL_FLOAT:
             pMipSet->m_ChannelFormat = CF_Float32;
-            switch (texture->glFormat)
+            switch (glFormat)
             {
             case GL_RED:
                 pMipSet->m_format = CMP_FORMAT_R_32F;
@@ -423,7 +466,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
         default:
             if (KTX_CMips)
             {
-                KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) unsupported GL format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, texture->glFormat);
+                KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) unsupported GL format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, glFormat);
             }
             return -1;
         }
@@ -502,7 +545,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
             }
             else
             {
-                switch (texture->glType)
+                switch (glType)
                 {
                     case GL_UNSIGNED_BYTE:
                         channelSize = 1;
@@ -520,7 +563,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
                         return -1;
                 }
 
-                switch (texture->glFormat)
+                switch (glFormat)
                 {
                 case GL_RED:
                     channelCount = 1;
@@ -553,7 +596,7 @@ int Plugin_KTX::TC_PluginFileLoadTexture(const char* pszFilename, MipSet* pMipSe
             {
                 if (KTX_CMips)
                 {
-                    KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) Read image data failed, Out of Memory. Format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, texture->glFormat);
+                    KTX_CMips->PrintError(("Error(%d): KTX Plugin ID(%d) Read image data failed, Out of Memory. Format %x\n"), EL_Error, IDS_ERROR_UNSUPPORTED_TYPE, glFormat);
                 }
                 return -1;
             }
