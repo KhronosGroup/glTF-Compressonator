@@ -41,6 +41,8 @@
 #include "TextureIO.h"
 #endif
 
+#include <sstream>
+
 // Feature is been removed as of Aug 2016
 // #define CMP_Texture_IO_SUPPORTED
 
@@ -60,9 +62,9 @@ SET_PLUGIN_NAME("KTX")
 void *make_Plugin_KTX() { return new Plugin_KTX; } 
 #endif
 
-uint32_t Endian_Conversion(uint32_t dword)
+static void writeId(std::ostream& dst)
 {
-    return (((dword>>24)&0x000000FF) | ((dword>>8)&0x0000FF00) | ((dword<<8)&0x00FF0000) | ((dword<<24)&0xFF000000));
+    dst << "glTF Compressonator v1.0";
 }
 
 Plugin_KTX::Plugin_KTX()
@@ -972,6 +974,14 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
             }
         }
     }
+
+    //
+
+    std::stringstream writer;
+    writeId(writer);
+    ktxHashList_AddKVPair(&texture->kvDataHead, KTX_WRITER_KEY, (ktx_uint32_t)writer.str().length() + 1, writer.str().c_str());
+
+    //
 
     KTX_error_code save = ktxTexture_WriteToNamedFile(texture, pszFilename);
     if (save != KTX_SUCCESS)
