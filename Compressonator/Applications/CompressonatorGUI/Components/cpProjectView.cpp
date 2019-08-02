@@ -3345,8 +3345,10 @@ QTreeWidgetItem* ProjectView::Tree_AddImageFile(QString filePathName, int index,
             m_data->m_FileSizeStr = QString().number((double)m_data->m_FileSize / 1024, 'f', 1) + " KB";
         else
             m_data->m_FileSizeStr = QString().number(m_data->m_FileSize) + " Bytes";
+
         // Load the Image File and MIP data!
         m_data->m_MipImages = m_imageloader->LoadPluginImage(filePathName);
+
 
         // Mip levels
         if (m_data->m_MipImages)
@@ -3372,6 +3374,10 @@ QTreeWidgetItem* ProjectView::Tree_AddImageFile(QString filePathName, int index,
                 m_data->m_WidthStr  = QString().number(m_data->m_Width) + " px";
                 m_data->m_FormatStr = GetFormatDesc(m_data->m_MipImages->mipset->m_format);
                 m_data->m_Format    = m_data->m_MipImages->mipset->m_format;
+
+                // Cube map or not.
+                m_data->m_Cube_Map = (m_data->m_MipImages->mipset->m_TextureType == TT_CubeMap);
+                m_data->m_Cube_MapStr = m_data->m_Cube_Map ? QString("true") : QString("false");
 
                 CMIPS     CMips;
                 MipLevel* pInMipLevel = CMips.GetMipLevel(m_data->m_MipImages->mipset, 0, 0);

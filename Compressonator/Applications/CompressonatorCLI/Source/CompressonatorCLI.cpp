@@ -199,6 +199,7 @@ void PrintUsage()
     printf("               green channel. Eight bits per pixel\n");
     printf("ETC_RGB        Ericsson Texture Compression - Compressed RGB format.\n");
     printf("ETC2_RGB       Ericsson Texture Compression - Compressed RGB format.\n");
+    printf("BASIS          Binomial Basis Compression.\n");
     printf("\n");
     printf("<codec options>: Reference  documentation for range of values\n\n");
     printf("-UseChannelWeighting <value> Use channel weightings\n");
