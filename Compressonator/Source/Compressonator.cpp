@@ -426,6 +426,12 @@ CMP_ERROR CMP_API CMP_ConvertTexture(CMP_Texture* pSourceTexture, CMP_Texture* p
 #ifdef ENABLE_MAKE_COMPATIBLE_API
     bool srcFloat = IsFloatFormat(pSourceTexture->format);
     bool destFloat = IsFloatFormat(pDestTexture->format);
+
+    if (pDestTexture->format == CMP_FORMAT_BASIS)
+    {
+        // For basis, keep settings.
+        destFloat = srcFloat;
+    }
     
     bool newBuffer = false;
     if (srcFloat && !destFloat)
@@ -532,6 +538,7 @@ CMP_ERROR CMP_API CMP_ConvertTexture(CMP_Texture* pSourceTexture, CMP_Texture* p
             && (destType != CT_BC6H)
             && (destType != CT_BC6H_SF)
             && (destType != CT_GT)
+            && (destType != CT_BASIS)
             )
         {
             tc_err = ThreadedCompressTexture(pSourceTexture, pDestTexture, pOptions, pFeedbackProc, pUser1, pUser2, destType);

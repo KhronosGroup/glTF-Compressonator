@@ -524,6 +524,13 @@ void CImagePropertyView::compressionValueChanged(QVariant& value)
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("ETC (Ericsson Texture Compression, lossy texture compression developed with Ericsson Research.)");
         break;
+    case C_Destination_Options::BASIS:
+        Quality_Settings = true;
+        HDR_Image_Properties = false;
+        m_infotext->append("<b>Format Description</b>");
+        m_infotext->append(
+            "Binomial basis supercompression.");
+        break;
 #ifdef USE_GT
     case C_Destination_Options::GT:
         Quality_Settings = true;

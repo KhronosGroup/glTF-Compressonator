@@ -778,6 +778,22 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         m_infotext->append("ASTC (Adaptive Scalable Texture Compression),lossy block-based texture compression developed with ARM.");
 
         break;
+    case C_Destination_Options::BASIS:
+        compressedOptions   = true;
+        colorWeightOptions  = false;
+        alphaChannelOptions = false;
+        astcbitrateOptions  = false;
+        if (m_DestinationData.m_SourceIsFloatFormat)
+        {
+            hdrOptions = true;
+        }
+        extension = "KTX";
+        m_fileFormats->addItem("KTX2");
+        m_infotext->clear();
+        m_infotext->append("<b>Format Description</b>");
+        m_infotext->append("BASIS compression.");
+
+        break;
     default:
         m_infotext->clear();
         m_fileFormats->addItems(m_AllFileTypes);

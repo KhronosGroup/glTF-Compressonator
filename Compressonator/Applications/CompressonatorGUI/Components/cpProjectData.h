@@ -1301,6 +1301,7 @@ public:
         ARGB_8888,
         ARGB_16F,
         ARGB_32F,
+        BASIS,
 #ifdef USE_GT
         GT,
 #endif

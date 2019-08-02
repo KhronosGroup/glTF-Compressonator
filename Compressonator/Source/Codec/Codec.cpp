@@ -49,6 +49,7 @@
 #include "Codec_BC6H.h"
 #include "Codec_BC7.h"
 #include "ASTC/Codec_ASTC.h"
+#include "BASIS/Codec_BASIS.h"
 
 #ifdef _WIN32  //GT only enabled for win build now
 #include "Codec_GT.h"
@@ -193,6 +194,8 @@ CCodec* CreateCodec(CodecType nCodecType)
         return new CCodec_BC7;
     case CT_ASTC:
         return new CCodec_ASTC;
+    case CT_BASIS:
+        return new CCodec_BASIS;
 #ifdef _WIN32
     case CT_GT:
         return new CCodec_GT;

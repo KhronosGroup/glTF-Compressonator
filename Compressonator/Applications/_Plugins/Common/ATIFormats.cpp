@@ -79,6 +79,7 @@ CMP_FormatDesc g_FormatDesc[] =
    {CMP_FORMAT_BC6H_SF,                 "BC6H_SF" },
    {CMP_FORMAT_BC7,                     "BC7"},
    {CMP_FORMAT_ASTC,                    "ASTC"},
+   {CMP_FORMAT_BASIS,                   "BASIS"},
 #ifdef USE_GT
    { CMP_FORMAT_GT,                      "GT" },
 #endif

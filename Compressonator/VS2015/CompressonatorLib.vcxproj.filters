@@ -102,6 +102,12 @@
     <Filter Include="Common">
       <UniqueIdentifier>{1f288b42-e7e4-4dd1-84b6-328fe90c42de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Codec\BASIS">
+      <UniqueIdentifier>{718680c3-d279-405f-9bda-50976befa2cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Codec\BASIS">
+      <UniqueIdentifier>{b459088f-eff9-4209-8c10-6d92a669f9d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="../Source/Compressonator.cpp">
@@ -358,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Codec\GT\GT_Encode.cpp">
       <Filter>Source Files\Codec\GT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Codec\BASIS\Codec_BASIS.cpp">
+      <Filter>Source Files\Codec\BASIS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -632,6 +641,9 @@
     </ClInclude>
     <ClInclude Include="..\Header\Codec\GT\GT_Encode.h">
       <Filter>Header Files\Codec\GT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Header\Codec\BASIS\Codec_BASIS.h">
+      <Filter>Header Files\Codec\BASIS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

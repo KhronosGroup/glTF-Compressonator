@@ -88,6 +88,7 @@ CodecType GetCodecType(CMP_FORMAT format)
         case CMP_FORMAT_ATC_RGBA_Interpolated:   return CT_ATC_RGBA_Interpolated;
         case CMP_FORMAT_ETC_RGB:                 return CT_ETC_RGB;
         case CMP_FORMAT_ETC2_RGB:                return CT_ETC2_RGB;
+        case CMP_FORMAT_BASIS:                   return CT_BASIS;
         case CMP_FORMAT_GT:                      return CT_GT;
         default: assert(0);                            return CT_Unknown;
     }
@@ -514,6 +515,12 @@ CMP_ERROR CompressTexture(const CMP_Texture* pSourceTexture, CMP_Texture* pDestT
     CCodecBuffer* pDestBuffer = pCodec->CreateBuffer(
                                                   pDestTexture->nBlockWidth, pDestTexture->nBlockHeight, pDestTexture->nBlockDepth,
                                                   pDestTexture->dwWidth, pDestTexture->dwHeight, pDestTexture->dwPitch, pDestTexture->pData);
+
+    // FIXME: Implement in codec.
+    if (destType == CT_BASIS)
+    {
+        pDestBuffer = CreateCodecBuffer(srcBufferType, pSourceTexture->nBlockWidth, pSourceTexture->nBlockHeight, pSourceTexture->nBlockDepth, pSourceTexture->dwWidth, pSourceTexture->dwHeight, pSourceTexture->dwPitch, pSourceTexture->pData);
+    }
 
     assert(pSrcBuffer);
     assert(pDestBuffer);

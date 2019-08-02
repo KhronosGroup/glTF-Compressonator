@@ -732,6 +732,7 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     case  CMP_FORMAT_ETC_RGB :                 
     case  CMP_FORMAT_ETC2_RGB:
     case  CMP_FORMAT_ASTC :
+    case  CMP_FORMAT_BASIS:
     case  CMP_FORMAT_GT:
         isCompressed            = true;
         break;
@@ -747,11 +748,23 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     {
         if (!isCompressed) 
         {
-            textureCreateInfo.glInternalformat = GL_RED;
+            textureCreateInfo.glInternalformat = GL_R8;
+            textureCreateInfo.vkFormat = VK_FORMAT_R8_UNORM;
+            if (pMipSet->m_ChannelFormat == CF_Float16)
+            {
+                textureCreateInfo.glInternalformat = GL_R16F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R16_SFLOAT;
+            }
+            else if (pMipSet->m_ChannelFormat == CF_Float32)
+            {
+                textureCreateInfo.glInternalformat = GL_R32F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R32_SFLOAT;
+            }
         }
         else
         {
             textureCreateInfo.glInternalformat = GL_RED;
+            // TODO: KTX2/Vulkan
         }
     }
     break;
@@ -759,11 +772,23 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     {
         if (!isCompressed)
         {
-            textureCreateInfo.glInternalformat = GL_RG;
+            textureCreateInfo.glInternalformat = GL_RG8;
+            textureCreateInfo.vkFormat = VK_FORMAT_R8G8_UNORM;
+            if (pMipSet->m_ChannelFormat == CF_Float16)
+            {
+                textureCreateInfo.glInternalformat = GL_RG16F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R16G16_SFLOAT;
+            }
+            else if (pMipSet->m_ChannelFormat == CF_Float32)
+            {
+                textureCreateInfo.glInternalformat = GL_RG32F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R32G32_SFLOAT;
+            }
         }
         else
         {
             textureCreateInfo.glInternalformat = GL_COMPRESSED_RG;
+            // TODO: KTX2/Vulkan
         }
     }
     break;
@@ -771,17 +796,40 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
     {
         if (!isCompressed)
         {
-            textureCreateInfo.glInternalformat = GL_RGB;
+            textureCreateInfo.glInternalformat = GL_RGB8;
+            textureCreateInfo.vkFormat = VK_FORMAT_R8G8B8_UNORM;
+            if (pMipSet->m_ChannelFormat == CF_Float16)
+            {
+                textureCreateInfo.glInternalformat = GL_RGB16F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R16G16B16_SFLOAT;
+            }
+            else if (pMipSet->m_ChannelFormat == CF_Float32)
+            {
+                textureCreateInfo.glInternalformat = GL_RGB32F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R32G32B32_SFLOAT;
+            }
         }
         else
         {
             if (pMipSet->m_format == CMP_FORMAT_BC1 || pMipSet->m_format == CMP_FORMAT_DXT1)
             {
                 textureCreateInfo.glInternalformat = GL_COMPRESSED_RGB_S3TC_DXT1_EXT;
+                // TODO: KTX2/Vulkan
             }
             else
             {
-                textureCreateInfo.glInternalformat = GL_RGB;
+                textureCreateInfo.glInternalformat = GL_RGB8;
+                textureCreateInfo.vkFormat = VK_FORMAT_R8G8B8_UNORM;
+                if (pMipSet->m_ChannelFormat == CF_Float16)
+                {
+                    textureCreateInfo.glInternalformat = GL_RGB16F;
+                    textureCreateInfo.vkFormat = VK_FORMAT_R16G16B16_SFLOAT;
+                }
+                else if (pMipSet->m_ChannelFormat == CF_Float32)
+                {
+                    textureCreateInfo.glInternalformat = GL_RGB32F;
+                    textureCreateInfo.vkFormat = VK_FORMAT_R32G32B32_SFLOAT;
+                }
             }
         }
     }
@@ -792,6 +840,16 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
         {
             textureCreateInfo.glInternalformat = GL_RGBA8;
             textureCreateInfo.vkFormat = VK_FORMAT_R8G8B8A8_UNORM;
+            if (pMipSet->m_ChannelFormat == CF_Float16)
+            {
+                textureCreateInfo.glInternalformat = GL_RGBA16F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R16G16B16A16_SFLOAT;
+            }
+            else if (pMipSet->m_ChannelFormat == CF_Float32)
+            {
+                textureCreateInfo.glInternalformat = GL_RGBA32F;
+                textureCreateInfo.vkFormat = VK_FORMAT_R32G32B32A32_SFLOAT;
+            }
         }
         else
         {
@@ -937,6 +995,20 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
                     // TODO: KTX2/Vulkan
                 }
                 break;
+            case CMP_FORMAT_BASIS:
+                textureCreateInfo.glInternalformat = GL_RGBA8;
+                textureCreateInfo.vkFormat = VK_FORMAT_R8G8B8A8_UNORM;
+                if (pMipSet->m_ChannelFormat == CF_Float16)
+                {
+                    textureCreateInfo.glInternalformat = GL_RGBA16F;
+                    textureCreateInfo.vkFormat = VK_FORMAT_R16G16B16A16_SFLOAT;
+                }
+                else if (pMipSet->m_ChannelFormat == CF_Float32)
+                {
+                    textureCreateInfo.glInternalformat = GL_RGBA32F;
+                    textureCreateInfo.vkFormat = VK_FORMAT_R32G32B32A32_SFLOAT;
+                }
+                break;
             case CMP_FORMAT_ETC_RGB:
                 textureCreateInfo.glInternalformat = ETC1_RGB8_OES;
                 // TODO: KTX2/Vulkan
@@ -1015,6 +1087,20 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
             {
                 return -1;
             }
+        }
+    }
+
+    //
+
+    if (isKTX2 && pMipSet->m_format == CMP_FORMAT_BASIS)
+    {
+        // TODO: Gather quality.
+        ktx_uint32_t basisQuality = 0;
+
+        KTX_error_code basisStatus = ktxTexture2_CompressBasis(texture2, basisQuality);
+        if (basisStatus != KTX_SUCCESS)
+        {
+            return -1;
         }
     }
 
