@@ -35,9 +35,21 @@
 
 class CCodec_BASIS : public CCodec
 {
+
+private:
+
+    double m_Quality;
+
+    CodecBufferType m_srcBufferType;
+
 public:
     CCodec_BASIS();
     ~CCodec_BASIS();
+
+    virtual bool SetParameter(const CMP_CHAR* pszParamName, CMP_DWORD dwValue);
+
+    virtual bool SetParameter(const CMP_CHAR* pszParamName, CODECFLOAT fValue);
+    virtual bool GetParameter(const CMP_CHAR* pszParamName, CODECFLOAT& fValue);
 
     // Required interfaces
     virtual CCodecBuffer* CreateBuffer(CMP_BYTE nBlockWidth, CMP_BYTE nBlockHeight, CMP_BYTE nBlockDepth, CMP_DWORD dwWidth, CMP_DWORD dwHeight, CMP_DWORD dwPitch = 0, CMP_BYTE* pData = 0) const;

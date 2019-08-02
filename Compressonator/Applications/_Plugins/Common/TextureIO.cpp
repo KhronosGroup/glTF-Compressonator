@@ -431,7 +431,6 @@ bool CompressedFormat(CMP_FORMAT format)
     case CMP_FORMAT_RGB_32F:
     case CMP_FORMAT_RG_32F:
     case CMP_FORMAT_R_32F:
-    case CMP_FORMAT_BASIS:
         return (false);
         break;
     default:

@@ -40,22 +40,51 @@
 CCodec_BASIS::CCodec_BASIS() :
     CCodec(CT_BASIS)
 {
+    m_Quality = 0.0;
 }
 
 CCodec_BASIS::~CCodec_BASIS()
 {
 }
 
+bool CCodec_BASIS::SetParameter(const CMP_CHAR* pszParamName, CODECFLOAT fValue)
+{
+    m_Quality = (double)fValue;
+
+    if (m_Quality < 0.0)
+    {
+        m_Quality = 0.0;
+    }
+    else if (m_Quality > 1.0)
+    {
+        m_Quality = 1.0;
+    }
+
+    return true;
+}
+
+bool CCodec_BASIS::GetParameter(const CMP_CHAR* pszParamName, CODECFLOAT& fValue)
+{
+    fValue = (CODECFLOAT)m_Quality;
+
+    return true;
+}
+
+bool CCodec_BASIS::SetParameter(const CMP_CHAR* pszParamName, CMP_DWORD dwValue)
+{
+    m_srcBufferType = (CodecBufferType)dwValue;
+
+    return true;
+}
+
 // Required interfaces
 CCodecBuffer* CCodec_BASIS::CreateBuffer(CMP_BYTE nBlockWidth, CMP_BYTE nBlockHeight, CMP_BYTE nBlockDepth, CMP_DWORD dwWidth, CMP_DWORD dwHeight, CMP_DWORD dwPitch, CMP_BYTE* pData) const
 {
-    // TODO:
-    return nullptr;
+    return CreateCodecBuffer(m_srcBufferType, nBlockWidth, nBlockHeight, nBlockDepth, dwWidth, dwHeight, dwPitch, pData);
 }
 
 CodecError CCodec_BASIS::Compress(CCodecBuffer& bufferIn, CCodecBuffer& bufferOut, Codec_Feedback_Proc pFeedbackProc, CMP_DWORD_PTR pUser1, CMP_DWORD_PTR pUser2)
 {
-    // FIXME: Move from KTX library to here.
     bufferOut.Copy(bufferIn);
 
     return CE_OK;

@@ -1955,6 +1955,13 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
                     destTexture.nBlockHeight = g_CmdPrams.BlockHeight;
                     destTexture.format       = destFormat;
                     destTexture.dwDataSize   = CMP_CalculateBufferSize(&destTexture);
+                    if (destFormat == CMP_FORMAT_BASIS)
+                    {
+                        destTexture.nBlockWidth = g_MipSetIn.m_nBlockWidth;
+                        destTexture.nBlockHeight = g_MipSetIn.m_nBlockHeight;
+                        destTexture.nBlockDepth = g_MipSetIn.m_nBlockDepth;
+                        destTexture.dwDataSize = CMP_CalculateBufferSize(&srcTexture);
+                    }
 
                     srcTexture.pData      = pInMipLevel->m_pbData;
                     srcTexture.dwDataSize = CMP_CalculateBufferSize(&srcTexture);
