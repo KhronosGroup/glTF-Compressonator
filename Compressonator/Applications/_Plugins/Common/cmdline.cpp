@@ -1889,6 +1889,11 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
         p_MipSetIn  = &g_MipSetIn;
         p_MipSetOut = &g_MipSetOut;
 
+        if (destFormat == CMP_FORMAT_BASIS)
+        {
+            g_MipSetCmp.m_userData = (int)(g_CmdPrams.CompressOptions.fquality * 254.0) + 1;
+        }
+
         //=====================================================
         // Case Uncompressed Source to Compressed Destination
         //

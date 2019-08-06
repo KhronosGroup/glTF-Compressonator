@@ -40,7 +40,7 @@
 CCodec_BASIS::CCodec_BASIS() :
     CCodec(CT_BASIS)
 {
-    m_Quality = 0.0;
+    m_Quality = 0.5;
 }
 
 CCodec_BASIS::~CCodec_BASIS()
@@ -92,7 +92,8 @@ CodecError CCodec_BASIS::Compress(CCodecBuffer& bufferIn, CCodecBuffer& bufferOu
 
 CodecError CCodec_BASIS::Decompress(CCodecBuffer& bufferIn, CCodecBuffer& bufferOut, Codec_Feedback_Proc pFeedbackProc, CMP_DWORD_PTR pUser1, CMP_DWORD_PTR pUser2)
 {
-    // TODO:
+    bufferOut.Copy(bufferIn);
+
     return CE_Aborted;
 }
 

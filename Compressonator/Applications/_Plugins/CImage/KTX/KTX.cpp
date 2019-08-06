@@ -1094,8 +1094,7 @@ int Plugin_KTX::TC_PluginFileSaveTexture(const char* pszFilename, MipSet* pMipSe
 
     if (isKTX2 && pMipSet->m_format == CMP_FORMAT_BASIS)
     {
-        // TODO: Gather quality.
-        ktx_uint32_t basisQuality = 0;
+        ktx_uint32_t basisQuality = (ktx_uint32_t)pMipSet->m_userData;
 
         KTX_error_code basisStatus = ktxTexture2_CompressBasis(texture2, basisQuality);
         if (basisStatus != KTX_SUCCESS)
