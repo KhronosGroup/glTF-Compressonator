@@ -148,6 +148,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer_OpenGL", "..\..
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HDR", "..\..\_Plugins\CImage\HDR\VS2015\HDR.vcxproj", "{4E9C26FF-C126-467F-8F41-7EEA09D620F4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libktx.gl", "..\..\..\..\Common\Lib\Ext\KTX2\build\msvs\x64\vs2015\libktx.gl.vcxproj", "{41CEBDB2-D52F-C759-BE77-94847732446D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_MD|Win32 = Debug_MD|Win32
@@ -592,6 +594,20 @@ Global
 		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|Win32.Build.0 = Release|Win32
 		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|x64.ActiveCfg = Release|x64
 		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|x64.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|Win32.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|x64.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|x64.Build.0 = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|Win32.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|x64.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|x64.Build.0 = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|Win32.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|x64.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|x64.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|x64.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -627,5 +643,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		Qt5Version = V5.5
+		SolutionGuid = {6909C2D3-FCF1-48B7-B28F-6A225953F288}
 	EndGlobalSection
 EndGlobal
