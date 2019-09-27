@@ -25,6 +25,13 @@
 #include "../json/json.h"
 #include "GltfFeatures.h"
 
+// fix leaking min define from some windows.h
+#ifdef min
+#undef min
+#endif
+
+#include <algorithm>
+
 #ifdef _WIN32
 #include <DirectXMath.h>            // Find a replacemnt for this so that the GUI is not platform specific! look at using CMP_MATH
 using namespace DirectX;
@@ -536,7 +543,7 @@ public:
     void SampleLinear(float time, float *frac, float **pCurr, float **pNext)
     {
         int curr_index = m_time.FindClosestFloatIndex(time);
-        int next_index = min(curr_index + 1, m_time.m_count - 1);
+        int next_index = std::min(curr_index + 1, m_time.m_count - 1);
 
         float curr_time = *(float*)m_time.Get(curr_index);
         float next_time = *(float*)m_time.Get(next_index);

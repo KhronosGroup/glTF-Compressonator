@@ -27,7 +27,10 @@
 #include "PluginInterface.h"
 #include "stdint.h"
 #include "ktx.h"
+#include "ktxvulkan.h"
 #include "ktxint.h"
+#include "KHR/khrplatform.h"
+#include "GL/glew.h"
 
 // {737CE1F6-F448-499E-B8B5-585F9A22893C}
 #ifdef _WIN32
@@ -75,7 +78,7 @@ for each keyValuePair that fits in bytesOfKeyValueData
     Byte     valuePadding[3 - ((keyAndValueByteSize + 3) % 4)]
 end
   
-for each mipmap_level in numberOfMipmapLevels*
+for each mipmap_level in numberOfMipLevels*
     UInt32 imageSize; 
     for each array_element in numberOfArrayElements*
        for each face in numberOfFaces
@@ -116,7 +119,7 @@ struct ktx_header
     uint32_t  pixelDepth;                // pixelDepth = 0 for 2D and cube textures 
     uint32_t  numberOfArrayElements;    // 0 for no array element (not a texture array) else specifies the number of array elements
     uint32_t  numberOfFaces;            // number of cube map faces (for cubemap or cubemap arrays = 6, else 1)
-    uint32_t  numberOfMipmapLevels;        // 1 for non-mipmapped textures, 0 for mipped mapmapped: full pyramid should be generated from level 0 at load time
+    uint32_t  numberOfMipLevels;        // 1 for non-mipmapped textures, 0 for mipped mapmapped: full pyramid should be generated from level 0 at load time
     uint32_t  bytesOfKeyValueData;        // Key value pairs 
 };
 

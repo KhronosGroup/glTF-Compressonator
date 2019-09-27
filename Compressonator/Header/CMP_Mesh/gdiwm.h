@@ -11,6 +11,7 @@
 * found in "gdiwindow.h", which is arguably much nicer.
 \* -------------------------------------------------------------------------*/
 #ifdef _WIN32
+#define NOMINMAX
 #include <windows.h>
 
 

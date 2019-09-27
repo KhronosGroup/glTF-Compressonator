@@ -38,7 +38,7 @@
     <ProjectGuid>{F1F85DF9-BD72-42F3-B11D-C5A29A252414}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>ModelLoader_glTF</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

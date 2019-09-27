@@ -266,6 +266,7 @@ typedef struct
    int               m_nBlockDepth;       ///< Depth in pixels of the Compression Block that is to be processed default for ASTC is 1
    MipLevelTable*    m_pMipLevelTable;    ///< This is an implementation dependent way of storing the MipLevels that this mip-map set contains. Do not depend on it, use TC_AppGetMipLevel to access a mip-map set's MipLevels.
    void*             m_pReservedData;     ///< Pointer to reserved data types
+   int               m_userData;          ///< Any user data
 } MipSet;
 
 CMP_DWORD GetChannelSize(ChannelFormat channelFormat);       //< \internal

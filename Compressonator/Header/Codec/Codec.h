@@ -64,6 +64,7 @@ typedef enum _CodecType
     CT_BC6H_SF,
     CT_BC7,
     CT_ASTC,
+    CT_BASIS,
     CT_GT,
     CODECS_AMD_INTERNAL
 } CodecType;

@@ -132,6 +132,7 @@ CSetCompressOptions::CSetCompressOptions(const QString title, QWidget* parent) :
     // Default output format
     m_fileFormats->addItem("DDS");
     m_fileFormats->addItem("KTX");
+    m_fileFormats->addItem("KTX2");
 
     // =================================================
     // Destination File
@@ -462,6 +463,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         astcbitrateOptions  = false;
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_fileFormats->setCurrentIndex(0);
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
@@ -480,6 +482,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -501,6 +504,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -523,6 +527,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(
@@ -539,6 +544,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -561,6 +567,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
 #ifdef USE_CRN
         m_fileFormats->addItem("CRN");
 #endif
@@ -580,6 +587,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed RGB format.");
@@ -595,6 +603,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed ARGB format with explicit alpha.");
@@ -610,6 +619,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("A compressed ARGB format with interpolated alpha.");
@@ -625,6 +635,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(" DXT5 with the red component swizzled into the alpha channel. Eight bits per pixel.");
@@ -640,6 +651,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("swizzled DXT5 format with the green component swizzled into the alpha channel. Eight bits per pixel.");
@@ -655,6 +667,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(
@@ -672,6 +685,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(
@@ -689,6 +703,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("swizzled DXT5 format with the blue component swizzled into the alpha channel. Eight bits per pixel.");
@@ -704,6 +719,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(
@@ -721,6 +737,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append(
@@ -738,6 +755,7 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         }
         m_fileFormats->addItem("DDS");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("ETC (Ericsson Texture Compression, lossy texture compression developed with Ericsson Research.)");
@@ -754,9 +772,26 @@ void CSetCompressOptions::compressionValueChanged(QVariant& value)
         extension = "KTX";
         m_fileFormats->addItem("ASTC");
         m_fileFormats->addItem("KTX");
+        m_fileFormats->addItem("KTX2");
         m_infotext->clear();
         m_infotext->append("<b>Format Description</b>");
         m_infotext->append("ASTC (Adaptive Scalable Texture Compression),lossy block-based texture compression developed with ARM.");
+
+        break;
+    case C_Destination_Options::BASIS:
+        compressedOptions   = true;
+        colorWeightOptions  = false;
+        alphaChannelOptions = false;
+        astcbitrateOptions  = false;
+        if (m_DestinationData.m_SourceIsFloatFormat)
+        {
+            hdrOptions = true;
+        }
+        extension = "KTX";
+        m_fileFormats->addItem("KTX2");
+        m_infotext->clear();
+        m_infotext->append("<b>Format Description</b>");
+        m_infotext->append("BASIS compression.");
 
         break;
     default:

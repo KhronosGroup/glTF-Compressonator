@@ -10,49 +10,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\EXR.cpp">
+    <ClCompile Include="../../../Common/cExr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\stdafx.cpp">
+    <ClCompile Include="../../../Common/MIPS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Common\MIPS.cpp">
-      <Filter>Common</Filter>
+    <ClCompile Include="../../../Common/TC_PluginInternal.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Common\TC_PluginInternal.cpp">
-      <Filter>Common</Filter>
+    <ClCompile Include="../../../Common/UtilFuncs.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Common\UtilFuncs.cpp">
-      <Filter>Common</Filter>
+    <ClCompile Include="../EXR.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Common\cExr.cpp">
+    <ClCompile Include="../stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\EXR.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\stdafx.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\MIPS.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\TC_PluginAPI.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\TC_PluginInternal.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\UtilFuncs.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\cExr.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Common\namespaceAlias.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClInclude Include="../../../Common/cExr.h" />
+    <ClInclude Include="../../../Common/MIPS.h" />
+    <ClInclude Include="../../../Common/namespaceAlias.h" />
+    <ClInclude Include="../../../Common/TC_PluginAPI.h" />
+    <ClInclude Include="../../../Common/TC_PluginInternal.h" />
+    <ClInclude Include="../../../Common/UtilFuncs.h" />
+    <ClInclude Include="../EXR.h" />
+    <ClInclude Include="../stdafx.h" />
   </ItemGroup>
 </Project>

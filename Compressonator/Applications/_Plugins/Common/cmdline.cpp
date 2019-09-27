@@ -69,6 +69,7 @@ using namespace tinygltf2;
 #endif
 
 #ifdef SHOW_PROCESS_MEMORY
+#define NOMINMAX
 #include "windows.h"
 #include "psapi.h"
 #endif
@@ -1536,6 +1537,8 @@ bool GenerateImageProps(std::string ImageFile)
 
     if (&g_MipSetIn)
     {
+        PrintInfo("Cube Map: %s\n", (g_MipSetIn.m_TextureType == TT_CubeMap) ? "true" : "false");
+
         //image size
 
         CMIPS     CMips;
@@ -1886,6 +1889,11 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
         p_MipSetIn  = &g_MipSetIn;
         p_MipSetOut = &g_MipSetOut;
 
+        if (destFormat == CMP_FORMAT_BASIS)
+        {
+            g_MipSetCmp.m_userData = (int)(g_CmdPrams.CompressOptions.fquality * 254.0) + 1;
+        }
+
         //=====================================================
         // Case Uncompressed Source to Compressed Destination
         //
@@ -1897,8 +1905,8 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
             // Allocate compression
             g_MipSetCmp.m_ChannelFormat = CF_Compressed;
             g_MipSetCmp.m_nMaxMipLevels = g_MipSetIn.m_nMaxMipLevels;
-            g_MipSetCmp.m_nMipLevels    = 1;  // this is overwriiten depending on input.
-            if (!g_CMIPS->AllocateMipSet(&g_MipSetCmp, CF_8bit, TDT_ARGB, TT_2D, g_MipSetIn.m_nWidth, g_MipSetIn.m_nHeight, 1))
+            g_MipSetCmp.m_nMipLevels    = g_MipSetIn.m_nMipLevels;
+            if (!g_CMIPS->AllocateMipSet(&g_MipSetCmp, CF_8bit, TDT_ARGB, g_MipSetIn.m_TextureType, g_MipSetIn.m_nWidth, g_MipSetIn.m_nHeight, 1, g_MipSetIn.m_TextureType == TT_CubeMap ? 6 : 0))
             {
                 PrintInfo("Memory Error(1): allocating MIPSet Compression buffer\n");
                 cleanup(Delete_gMipSetIn, SwizzledMipSetIn);
@@ -1909,6 +1917,8 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
             g_MipSetCmp.m_nWidth  = g_MipSetIn.m_nWidth;
             g_MipSetCmp.m_format  = destFormat;
             Format2FourCC(destFormat, &g_MipSetCmp);
+
+            g_MipSetCmp.m_TextureType = g_MipSetIn.m_TextureType;
 
             CMP_Texture srcTexture;
             srcTexture.dwSize = sizeof(srcTexture);
@@ -1950,6 +1960,13 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
                     destTexture.nBlockHeight = g_CmdPrams.BlockHeight;
                     destTexture.format       = destFormat;
                     destTexture.dwDataSize   = CMP_CalculateBufferSize(&destTexture);
+                    if (destFormat == CMP_FORMAT_BASIS)
+                    {
+                        destTexture.nBlockWidth = g_MipSetIn.m_nBlockWidth;
+                        destTexture.nBlockHeight = g_MipSetIn.m_nBlockHeight;
+                        destTexture.nBlockDepth = g_MipSetIn.m_nBlockDepth;
+                        destTexture.dwDataSize = CMP_CalculateBufferSize(&srcTexture);
+                    }
 
                     srcTexture.pData      = pInMipLevel->m_pbData;
                     srcTexture.dwDataSize = CMP_CalculateBufferSize(&srcTexture);
@@ -2211,7 +2228,7 @@ int ProcessCMDLine(CMP_Feedback_Proc pFeedbackProc, MipSet* p_userMipSetIn)
 
             // Allocate output MipSet
             if (!g_CMIPS->AllocateMipSet(&g_MipSetOut, g_MipSetOut.m_ChannelFormat, g_MipSetOut.m_TextureDataType, p_MipSetIn->m_TextureType,
-                                         p_MipSetIn->m_nWidth, p_MipSetIn->m_nHeight, p_MipSetIn->m_nDepth))
+                                         p_MipSetIn->m_nWidth, p_MipSetIn->m_nHeight, p_MipSetIn->m_nDepth, (p_MipSetIn->m_TextureType == TT_CubeMap) ? 6 : 1))
             {
                 PrintInfo("Memory Error(2): allocating MIPSet Output buffer\n");
                 cleanup(Delete_gMipSetIn, SwizzledMipSetIn);

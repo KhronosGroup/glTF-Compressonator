@@ -38,6 +38,7 @@
     <ProjectGuid>{411CD7F5-D04B-456A-8B30-631170C7445A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>BoxFilter</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)/Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

@@ -38,6 +38,7 @@
     <ProjectGuid>{B9809E47-2BA9-44F4-A91D-29D2493509A2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>KTX</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)/Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -240,7 +241,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../;../Lib;../../../../../../Common/Lib/Ext/glew/1.9.0/include;../../../../../Applications/_Plugins/;../../../../../Applications/_Plugins/Common;../../../../../header;$(AMDCOMPRESS_ROOT)/SDK/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../;../../../../../../Common/Lib/Ext/KTX2/other_include;../../../../../../Common/Lib/Ext/KTX2/include;../../../../../../Common/Lib/Ext/KTX2/lib;../../../../../../Common/Lib/Ext/glew/1.9.0/include;../../../../../Applications/_Plugins/;../../../../../Applications/_Plugins/Common;../../../../../header;$(AMDCOMPRESS_ROOT)/SDK/include;$(VK_SDK_PATH)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -252,6 +253,9 @@
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -360,16 +364,8 @@
     <ClCompile Include="../../../Common/TC_PluginInternal.cpp" />
     <ClCompile Include="../../../Common/UtilFuncs.cpp" />
     <ClCompile Include="../KTX.cpp" />
-    <ClCompile Include="../Lib/checkheader.c" />
-    <ClCompile Include="../Lib/errstr.c" />
-    <ClCompile Include="../Lib/hashtable.c" />
-    <ClCompile Include="../Lib/ktxfilestream.c" />
-    <ClCompile Include="../Lib/ktxmemstream.c" />
-    <ClCompile Include="../Lib/loader.c" />
-    <ClCompile Include="../Lib/swap.c" />
-    <ClCompile Include="../Lib/writer.c" />
-    <ClCompile Include="../softfloat.cpp" />
     <ClCompile Include="../StdAfx.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Common\Lib\Ext\KTX2\lib\swap.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../../../Common/MIPS.h" />
@@ -377,17 +373,6 @@
     <ClInclude Include="../../../Common/TC_PluginInternal.h" />
     <ClInclude Include="../../../Common/UtilFuncs.h" />
     <ClInclude Include="../cKTX.h" />
-    <ClInclude Include="../Lib/gles1_funcptrs.h" />
-    <ClInclude Include="../Lib/gles2_funcptrs.h" />
-    <ClInclude Include="../Lib/gles3_funcptrs.h" />
-    <ClInclude Include="../Lib/gl_funcptrs.h" />
-    <ClInclude Include="../Lib/ktx.h" />
-    <ClInclude Include="../Lib/ktxfilestream.h" />
-    <ClInclude Include="../Lib/ktxint.h" />
-    <ClInclude Include="../Lib/ktxmemstream.h" />
-    <ClInclude Include="../Lib/ktxstream.h" />
-    <ClInclude Include="../Lib/uthash.h" />
-    <ClInclude Include="../softfloat.h" />
     <ClInclude Include="../StdAfx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)/Microsoft.Cpp.targets" />

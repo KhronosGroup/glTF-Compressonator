@@ -128,8 +128,11 @@ int MaxFacesOrSlices(const MipSet* pMipSet, int nMipLevel)
     if(pMipSet->m_nDepth < 1)
         return 0;
 
-    if(pMipSet->m_TextureType == TT_2D || pMipSet->m_TextureType == TT_CubeMap)
+    if(pMipSet->m_TextureType == TT_2D)
         return pMipSet->m_nDepth;
+
+    if (pMipSet->m_TextureType == TT_CubeMap)
+        return 6;
 
     int nMaxSlices = pMipSet->m_nDepth;
     for(int i=0; i<pMipSet->m_nMipLevels; i++)
@@ -181,6 +184,11 @@ bool IsDestinationUnCompressed(const char *fname)
     }
     else
     if (file_extension.compare(".ktx") == 0)
+    {
+        isuncompressed = false;
+    }
+    else
+    if (file_extension.compare(".ktx2") == 0)
     {
         isuncompressed = false;
     }
@@ -716,6 +724,7 @@ MipSet* DecompressMIPSet(MipSet *MipSetIn, CMP_GPUDecode decodeWith, Config *con
     MipSetOut->m_CubeFaceMask = MipSetIn->m_CubeFaceMask;
     MipSetOut->m_Flags = MipSetIn->m_Flags;
     MipSetOut->m_nDepth = MipSetIn->m_nDepth;
+    MipSetOut->m_nMipLevels = MipSetIn->m_nMipLevels;
     MipSetOut->m_nMaxMipLevels = MipSetIn->m_nMaxMipLevels;
     MipSetOut->m_nHeight = MipSetIn->m_nHeight;
     MipSetOut->m_nWidth = MipSetIn->m_nWidth;
@@ -741,7 +750,8 @@ MipSet* DecompressMIPSet(MipSet *MipSetIn, CMP_GPUDecode decodeWith, Config *con
         MipSetIn->m_TextureType,
         MipSetIn->m_nWidth,
         MipSetIn->m_nHeight,
-        MipSetIn->m_nDepth))
+        MipSetIn->m_nDepth,
+        (MipSetIn->m_TextureType == TT_CubeMap) ? 6 : 1))
     {
         configSetting->errMessage = "Memory Error(2): allocating MIPSet Output buffer.";
         PrintInfo("Memory Error(2): allocating MIPSet Output buffer\n");

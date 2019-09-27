@@ -71,6 +71,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CompressonatorLib</RootNamespace>
     <ProjectName>Compressonator</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)/Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -1170,6 +1171,7 @@
     <ClCompile Include="../Source/Codec/DXTC/dxtc_v11_compress.c" />
     <ClCompile Include="../Source/Codec/DXTC/dxtc_v11_compress_asm.c" />
     <ClCompile Include="../Source/Compress.cpp" />
+    <ClCompile Include="..\Source\Codec\BASIS\Codec_BASIS.cpp" />
     <ClCompile Include="..\Source\Codec\GT\Codec_GT.cpp" />
     <ClCompile Include="..\Source\Codec\GT\GT_Decode.cpp" />
     <ClCompile Include="..\Source\Codec\GT\GT_Encode.cpp" />
@@ -1259,6 +1261,7 @@
     <ClInclude Include="../Header/Internal/debug.h" />
     <ClInclude Include="../Header/Version.h" />
     <ClInclude Include="../Source/Common/HDR_Encode.h" />
+    <ClInclude Include="..\Header\Codec\BASIS\Codec_BASIS.h" />
     <ClInclude Include="..\Header\Codec\GT\Codec_GT.h" />
     <ClInclude Include="..\Header\Codec\GT\GT_Decode.h" />
     <ClInclude Include="..\Header\Codec\GT\GT_Definitions.h" />

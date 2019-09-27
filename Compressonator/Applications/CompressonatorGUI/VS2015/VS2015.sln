@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25402.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins_Libs", "Plugins_Libs", "{CAF6EE95-57C7-4F35-A4B3-F688A44C36B9}"
 EndProject
@@ -145,6 +145,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer_OpenGL", "..\..
 	ProjectSection(ProjectDependencies) = postProject
 		{9EE67DB2-4AD8-4B9A-AE58-2E536412033C} = {9EE67DB2-4AD8-4B9A-AE58-2E536412033C}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HDR", "..\..\_Plugins\CImage\HDR\VS2015\HDR.vcxproj", "{4E9C26FF-C126-467F-8F41-7EEA09D620F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libktx.gl", "..\..\..\..\Common\Lib\Ext\KTX2\build\msvs\x64\vs2015\libktx.gl.vcxproj", "{41CEBDB2-D52F-C759-BE77-94847732446D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -574,6 +578,36 @@ Global
 		{1565B9EC-358E-46FF-924D-7BD31D1798CF}.Release|Win32.Build.0 = Release|Win32
 		{1565B9EC-358E-46FF-924D-7BD31D1798CF}.Release|x64.ActiveCfg = Release|x64
 		{1565B9EC-358E-46FF-924D-7BD31D1798CF}.Release|x64.Build.0 = Release|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug_MD|Win32.ActiveCfg = Debug_MD|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug_MD|Win32.Build.0 = Debug_MD|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug_MD|x64.ActiveCfg = Debug_MD|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug_MD|x64.Build.0 = Debug_MD|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug|Win32.Build.0 = Debug|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug|x64.ActiveCfg = Debug|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Debug|x64.Build.0 = Debug|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release_MD|Win32.ActiveCfg = Release_MD|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release_MD|Win32.Build.0 = Release_MD|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release_MD|x64.ActiveCfg = Release_MD|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release_MD|x64.Build.0 = Release_MD|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|Win32.ActiveCfg = Release|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|Win32.Build.0 = Release|Win32
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|x64.ActiveCfg = Release|x64
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4}.Release|x64.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|Win32.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|x64.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug_MD|x64.Build.0 = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|Win32.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|x64.ActiveCfg = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Debug|x64.Build.0 = Debug|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|Win32.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|x64.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release_MD|x64.Build.0 = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|Win32.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|x64.ActiveCfg = Release|x64
+		{41CEBDB2-D52F-C759-BE77-94847732446D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -605,8 +639,10 @@ Global
 		{0C50E549-D9BE-4279-910F-038BFCDA094B} = {F1609A09-D250-4B6F-B10D-BA532832712A}
 		{E5615E66-7E8F-46C2-8E26-CC8546915A27} = {F1609A09-D250-4B6F-B10D-BA532832712A}
 		{1565B9EC-358E-46FF-924D-7BD31D1798CF} = {F1609A09-D250-4B6F-B10D-BA532832712A}
+		{4E9C26FF-C126-467F-8F41-7EEA09D620F4} = {799F5CDD-D17A-4649-880B-BE1601AF32CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		Qt5Version = V5.5
+		SolutionGuid = {6909C2D3-FCF1-48B7-B28F-6A225953F288}
 	EndGlobalSection
 EndGlobal

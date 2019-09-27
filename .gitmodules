@@ -22,4 +22,7 @@
 [submodule "Common/Lib/Ext/OpenEXR"]
 	path = Common/Lib/Ext/OpenEXR
 	url = https://github.com/GPUOpen-Tools/common-lib-ext-OpenEXR-2.2.git
-
+[submodule "Common/Lib/Ext/KTX2"]
+	path = Common/Lib/Ext/KTX2
+	url = https://github.com/KhronosGroup/KTX-Software.git
+    branch = ktx2

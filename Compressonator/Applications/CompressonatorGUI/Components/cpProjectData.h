@@ -1301,6 +1301,7 @@ public:
         ARGB_8888,
         ARGB_16F,
         ARGB_32F,
+        BASIS,
 #ifdef USE_GT
         GT,
 #endif
@@ -1540,12 +1541,12 @@ Q_OBJECT
     Q_PROPERTY(QString  _Name       MEMBER m_Name)
     Q_PROPERTY(QString  _Full_Path  MEMBER m_Full_Path)
     Q_PROPERTY(QString  _File_Size  MEMBER m_FileSizeStr)
+    Q_PROPERTY(QString  _Cube_Map   MEMBER m_Cube_MapStr)
     Q_PROPERTY(QString  _Image_Size MEMBER m_ImageSizeStr)
     Q_PROPERTY(QString  _Width      MEMBER m_WidthStr)
     Q_PROPERTY(QString  _Height     MEMBER m_HeightStr)
     Q_PROPERTY(int      _Mip_Levels MEMBER m_Mip_Levels)
     Q_PROPERTY(QString  _Format     MEMBER m_FormatStr)
-
 
     Q_ENUMS(CMP_FORMAT)
 
@@ -1556,9 +1557,11 @@ public:
         m_Full_Path     = "";
         m_ImageSize     = 0;
         m_FileSize      = 0;
+        m_Cube_Map      = false;
         m_Width         = 0;
         m_Height        = 0;
         m_FileSizeStr   = "";
+        m_Cube_MapStr   = "false";
         m_ImageSizeStr  = "";
         m_WidthStr      = "";
         m_HeightStr     = "";
@@ -1579,14 +1582,15 @@ public:
     QString m_WidthStr;
     QString m_HeightStr;
     QString m_FileSizeStr;
+    QString m_Cube_MapStr;
     QString m_ImageSizeStr;
     QString m_FormatStr;
-    
 
     CMP_FORMAT m_Format;
     int     m_Width;
     int     m_Height;
     int     m_FileSize;
+    bool    m_Cube_Map;
     int     m_Mip_Levels;
     int     m_extnum;
     long    m_ImageSize;

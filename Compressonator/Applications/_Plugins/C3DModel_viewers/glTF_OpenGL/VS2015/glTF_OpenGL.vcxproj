@@ -38,7 +38,7 @@
     <ProjectGuid>{1565B9EC-358E-46FF-924D-7BD31D1798CF}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
     <ProjectName>ModelViewer_OpenGL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

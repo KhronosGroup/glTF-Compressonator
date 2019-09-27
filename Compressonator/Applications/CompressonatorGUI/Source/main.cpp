@@ -35,6 +35,7 @@
 #pragma comment(lib,"EXR.lib")
 #pragma comment(lib,"KTX.lib")
 #pragma comment(lib,"TGA.lib")
+#pragma comment(lib,"HDR.lib")
 #pragma comment(lib,"IMGAnalysis.lib")
 
 #ifdef USE_CRN
@@ -48,6 +49,7 @@ extern void *make_Plugin_DDS();
 extern void *make_Plugin_EXR();
 extern void *make_Plugin_KTX();
 extern void *make_Plugin_TGA();
+extern void *make_Plugin_HDR();
 extern void *make_Plugin_CAnalysis();
 
 #ifdef USE_CRN
@@ -134,6 +136,8 @@ int main(int argc, char **argv)
         g_pluginManager.registerStaticPlugin("IMAGE",  "DDS",       make_Plugin_DDS);
         g_pluginManager.registerStaticPlugin("IMAGE",  "EXR",       make_Plugin_EXR);
         g_pluginManager.registerStaticPlugin("IMAGE",  "KTX",       make_Plugin_KTX);
+        g_pluginManager.registerStaticPlugin("IMAGE",  "KTX2",      make_Plugin_KTX);
+        g_pluginManager.registerStaticPlugin("IMAGE",  "HDR",       make_Plugin_HDR);
 
 #ifdef USE_CRN
         g_pluginManager.registerStaticPlugin("IMAGE", "CRN", make_Plugin_CRN);

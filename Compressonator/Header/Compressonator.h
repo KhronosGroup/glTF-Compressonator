@@ -124,6 +124,7 @@ typedef enum
     CMP_FORMAT_R_32F,         ///< Single component with 32-bit floating-point channels.
     // Compression formats -----------------------------------------------------------------------------------
     CMP_FORMAT_ASTC,   ///< ASTC (Adaptive Scalable Texture Compression) open texture compression standard
+    CMP_FORMAT_BASIS,   ///< BASIS
     CMP_FORMAT_ATI1N,  ///< Single component compression format using the same technique as DXT5 alpha. Four bits per pixel.
     CMP_FORMAT_ATI2N,  ///<     Two component compression format using the same technique as DXT5 alpha. Designed for compression of tangent space normal maps. Eight bits per pixel.
     CMP_FORMAT_ATI2N_XY,  ///<    Two component compression format using the same technique as DXT5 alpha. The same as ATI2N but with the channels swizzled. Eight bits per pixel.

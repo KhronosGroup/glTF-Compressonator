@@ -38,7 +38,7 @@
     <ProjectGuid>{E5615E66-7E8F-46C2-8E26-CC8546915A27}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
     <ProjectName>ModelViewer_Vulkan</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

@@ -80,6 +80,7 @@
 #endif
 
 #ifdef _WIN32
+#define NOMINMAX
 #include <windows.h>
 #elif !defined(__ANDROID__)
 #include <wordexp.h>

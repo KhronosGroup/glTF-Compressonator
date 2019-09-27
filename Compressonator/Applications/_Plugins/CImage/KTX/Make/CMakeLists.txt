@@ -5,7 +5,6 @@ project (KTX)
 set (CMP_INCLUDE_DIRS "")
 list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common/")
 list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../Header/")
-list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/")
 list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../")
 
 
@@ -38,6 +37,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../Common/Lib/Ext/glew/1.9.0/include/")
     list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../Common/Lib/Ext/OpenEXR/openexr-2.2.0/VS2015/x64/include/OpenEXR/")
     list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../Common/Lib/Ext/OpenEXR/ilmbase-2.2.0/VS2015/x64/include/OpenEXR/")
+    list(APPEND CMP_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../Common/Lib/Ext/KTX2/include/")
 endif()
 
 
@@ -66,14 +66,6 @@ list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common/UtilFuncs
 list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../KTX.cpp")
 list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../StdAfx.cpp")
 list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../softfloat.cpp")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/swap.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/checkheader.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/errstr.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/hashtable.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/ktxfilestream.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/ktxmemstream.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/loader.c")
-list (APPEND CMP_SOURCES1 "${CMAKE_CURRENT_SOURCE_DIR}/../Lib/writer.c")
 
 add_library(KTX STATIC ${CMP_SOURCES1})
 

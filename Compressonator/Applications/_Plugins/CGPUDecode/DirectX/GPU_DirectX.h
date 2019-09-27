@@ -32,6 +32,7 @@
 #include <dxgiformat.h>
 #include <d3d11.h>
 #include <directxmath.h>
+#define NOMINMAX
 #include "Windows.h"
 #include <stdio.h>
 

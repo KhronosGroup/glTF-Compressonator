@@ -38,7 +38,7 @@
     <ProjectGuid>{F9834E0C-3037-4AAB-B7A2-2E0265BC0211}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>ASTC</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

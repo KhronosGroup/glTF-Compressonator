@@ -88,6 +88,7 @@ CodecType GetCodecType(CMP_FORMAT format)
         case CMP_FORMAT_ATC_RGBA_Interpolated:   return CT_ATC_RGBA_Interpolated;
         case CMP_FORMAT_ETC_RGB:                 return CT_ETC_RGB;
         case CMP_FORMAT_ETC2_RGB:                return CT_ETC2_RGB;
+        case CMP_FORMAT_BASIS:                   return CT_BASIS;
         case CMP_FORMAT_GT:                      return CT_GT;
         default: assert(0);                            return CT_Unknown;
     }
@@ -418,6 +419,7 @@ CMP_ERROR CompressTexture(const CMP_Texture* pSourceTexture, CMP_Texture* pDestT
     if(pCodec == NULL)
         return CMP_ERR_UNABLE_TO_INIT_CODEC;
 
+    CodecBufferType srcBufferType = GetCodecBufferType(pSourceTexture->format);
 
     // Have we got valid options ?
     if(pOptions && pOptions->dwSize == sizeof(CMP_CompressOptions))
@@ -455,9 +457,12 @@ CMP_ERROR CompressTexture(const CMP_Texture* pSourceTexture, CMP_Texture* pDestT
         else
             pCodec->SetParameter("CompressionSpeed", (CMP_DWORD)pOptions->nCompressionSpeed);
 
-
         switch(destType)
         {
+        case CT_BASIS:
+            pCodec->SetParameter("Quality", (CODECFLOAT)pOptions->fquality);
+            pCodec->SetParameter("SourceBufferType", (CMP_DWORD)srcBufferType);
+            break;
         case CT_BC7:
                 pCodec->SetParameter("MultiThreading", (CMP_DWORD) !pOptions->bDisableMultiThreading);
                 
@@ -505,8 +510,6 @@ CMP_ERROR CompressTexture(const CMP_Texture* pSourceTexture, CMP_Texture* pDestT
 
 
     }
-
-    CodecBufferType srcBufferType = GetCodecBufferType(pSourceTexture->format);
 
     CCodecBuffer* pSrcBuffer  = CreateCodecBuffer(srcBufferType, 
                                                   pSourceTexture->nBlockWidth, pSourceTexture->nBlockHeight, pSourceTexture->nBlockDepth,
